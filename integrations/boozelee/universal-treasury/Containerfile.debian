@@ -1,0 +1,41 @@
+# Universal Treasury CLI - Debian-based Containerfile
+# Build with: podman build -t universal-treasury-cli -f Containerfile.debian .
+
+FROM debian:bookworm-slim
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
+        sqlite3 \
+        libsqlite3-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy binary
+COPY treasury /usr/local/bin/treasury
+
+# Make binary executable
+RUN chmod +x /usr/local/bin/treasury
+
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/treasury"]
+
+# Default command
+CMD ["--help"]
+
+# Metadata
+LABEL org.opencontainers.image.title="Universal Treasury CLI"
+LABEL org.opencontainers.image.description="Universal Financial Operations CLI with Wise integration"
+LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.source="https://github.com/universal-treasury/cli"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL maintainer="Universal Treasury <support@universal-treasury.com>"
+
+# Security: Run as non-root user
+RUN useradd -m appuser && \
+    chown -R appuser:appuser /app
+
+USER appuser

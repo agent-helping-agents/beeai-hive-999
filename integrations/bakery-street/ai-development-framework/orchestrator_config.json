@@ -1,0 +1,8 @@
+{
+  "max_concurrent_workflows": 5,
+  "timeout_seconds": 300,
+  "retry_attempts": 3,
+  "logging_level": "INFO",
+  "metrics_collection": true,
+  "auto_scaling": true
+}

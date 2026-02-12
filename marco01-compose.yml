@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  marco01-brain-engine:
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda
+    container_name: marco01-brain-engine
+    command:
+      - -m
+      - /models/marco-o1-q4_k_m.gguf
+      - --ctx-size
+      - "4096"
+      - --threads
+      - "16"
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8080"
+      - --n-gpu-layers
+      - "999"
+      - --api-openai
+    ports:
+      - "56625:8080"
+    volumes:
+      - ~/.local/share/podman-ai-lab/models/marco-o1:/models:Z
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]

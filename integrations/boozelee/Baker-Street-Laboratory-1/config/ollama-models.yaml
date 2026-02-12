@@ -1,0 +1,273 @@
+# Baker Street Laboratory - Ollama Model Configuration
+# Complete AI model ecosystem for psychedelic detective research
+
+models:
+  # PRIORITY 1: ESSENTIAL MODELS
+  vision:
+    name: "llava:7b-v1.6-mistral-q4_K_M"
+    alias: "baker-street-vision"
+    size: "4.2GB"
+    hardware: "GPU"
+    priority: 1
+    description: "Visual analysis for research documents, charts, diagrams"
+    use_cases:
+      - "Analyze research document images"
+      - "Process screenshots of data visualizations"
+      - "Interpret scientific diagrams and figures"
+      - "Visual content analysis for research reports"
+    baker_street_role: "Visual evidence analysis for psychedelic detective investigations"
+    
+  embedding:
+    name: "nomic-embed-text"
+    alias: "baker-street-embed"
+    size: "274MB"
+    hardware: "CPU"
+    priority: 1
+    description: "Semantic search and content similarity analysis"
+    use_cases:
+      - "Semantic search across research documents"
+      - "Find related research papers and articles"
+      - "Content similarity analysis"
+      - "Research topic clustering"
+    baker_street_role: "Connect disparate clues and research threads"
+    
+  long_context:
+    name: "yarn-mistral:7b-128k-q4_K_M"
+    alias: "baker-street-longcontext"
+    size: "4.1GB"
+    hardware: "GPU"
+    priority: 1
+    description: "Process entire research papers with 128k context"
+    use_cases:
+      - "Process entire research papers"
+      - "Analyze long documents and reports"
+      - "Comprehensive literature reviews"
+      - "Multi-document synthesis"
+    baker_street_role: "Deep case file analysis and comprehensive report generation"
+
+  # PRIORITY 2: RECOMMENDED MODELS
+  scientific:
+    name: "openchat:3.5-0106-q4_K_M"
+    alias: "baker-street-scientific"
+    size: "4.1GB"
+    hardware: "GPU"
+    priority: 2
+    description: "Scientific literature analysis and research methodology"
+    use_cases:
+      - "Scientific literature analysis"
+      - "Research methodology guidance"
+      - "Academic writing assistance"
+      - "Citation and reference management"
+    baker_street_role: "Academic research consultant for evidence-based investigations"
+    
+  creative:
+    name: "neural-chat:7b-v3-3-q4_K_M"
+    alias: "baker-street-creative"
+    size: "4.1GB"
+    hardware: "GPU"
+    priority: 2
+    description: "Creative writing and engaging report generation"
+    use_cases:
+      - "Generate engaging research reports"
+      - "Create psychedelic detective narratives"
+      - "Enhance report readability and style"
+      - "Creative data presentation"
+    baker_street_role: "Transform dry research into compelling detective stories"
+    
+  data_analysis:
+    name: "deepseek-coder:6.7b-instruct-q4_K_M"
+    alias: "baker-street-coder"
+    size: "3.8GB"
+    hardware: "GPU"
+    priority: 2
+    description: "Statistical analysis and data processing automation"
+    use_cases:
+      - "Statistical analysis code generation"
+      - "Data processing scripts"
+      - "Research automation"
+      - "API integration development"
+    baker_street_role: "Automated data detective for pattern recognition"
+
+  # PRIORITY 3: SPECIALIZED MODELS
+  legal:
+    name: "arcee-ai/arcee-agent"
+    alias: "baker-street-legal"
+    size: "4.1GB"
+    hardware: "CPU"
+    priority: 3
+    description: "Legal research and contract analysis specialist"
+    use_cases:
+      - "Contract analysis and key legal terms extraction"
+      - "Legal research and case law summarization"
+      - "Compliance analysis and regulatory review"
+      - "Legal document drafting assistance"
+    baker_street_role: "Legal evidence analysis and regulatory compliance research"
+    
+  audio_analysis:
+    name: "qwen2-audio:7b-instruct"
+    alias: "baker-street-audio"
+    size: "4.2GB"
+    hardware: "CPU"
+    priority: 3
+    description: "Audio analysis and transcription capabilities"
+    use_cases:
+      - "Audio transcription and analysis"
+      - "Speech pattern recognition"
+      - "Audio content summarization"
+      - "Voice-to-text conversion"
+    baker_street_role: "Audio evidence analysis and witness interview transcription"
+
+# EXISTING MODELS (from external drive)
+existing_models:
+  reasoning:
+    name: "hermes-3-llama-3b"
+    path: "/media/batman/2e5c0fde-0328-49e4-8d37-dd18be027734/Desktop/boowelee/AIOSsetup/aios-models/hermes-3-llama-3b.gguf"
+    alias: "baker-street-hermes3"
+    size: "4.6GB"
+    hardware: "CPU"
+    priority: 1
+    description: "Primary reasoning and research analysis model"
+    baker_street_role: "Core research analyst and query processor"
+    
+  coding:
+    name: "codellama-7b-instruct"
+    path: "/media/batman/2e5c0fde-0328-49e4-8d37-dd18be027734/Desktop/boowelee/AIOSsetup/aios-models/codellama-7b-instruct.gguf"
+    alias: "baker-street-codellama"
+    size: "3.9GB"
+    hardware: "GPU"
+    priority: 2
+    description: "Code generation and technical analysis"
+    baker_street_role: "Technical research automation and code analysis"
+    
+  fast_response:
+    name: "qwen3-1.7b"
+    path: "/media/batman/2e5c0fde-0328-49e4-8d37-dd18be027734/Desktop/boowelee/AIOSsetup/aios-models/qwen3-1.7b.gguf"
+    alias: "baker-street-qwen3"
+    size: "211MB"
+    hardware: "CPU"
+    priority: 1
+    description: "Fast responses and real-time interactions"
+    baker_street_role: "Quick queries and instant feedback system"
+
+  # ADDITIONAL MODELS FROM DRIVE
+  josiefied:
+    name: "qwen3-8b-josiefied"
+    path: "/media/batman/2e5c0fde-0328-49e4-8d37-dd18be027734/ai-models/qwen3-8b-josiefied/Qwen3-8B-192k-Josiefied-Uncensored-NEO-Max-D_AU-Q2_K-imat.gguf"
+    alias: "baker-street-josiefied"
+    size: "4GB"  # Estimated
+    hardware: "GPU"
+    priority: 2
+    description: "Specialized model for advanced reasoning"
+    baker_street_role: "Enhanced analysis for complex investigations"
+
+  elohim_shard:
+    name: "elohim-shard-model"
+    path: "/media/batman/2e5c0fde-0328-49e4-8d37-dd18be027734/Elohim_Shard_Collection/llama.cpp/some-model.gguf"  # Placeholder, adjust based on actual
+    alias: "baker-street-elohim"
+    size: "3GB"  # Estimated
+    hardware: "CPU"
+    priority: 3
+    description: "Model for alien tech pattern analysis"
+    baker_street_role: "Specialized in unconventional data patterns"
+
+# HARDWARE ALLOCATION STRATEGY
+hardware_allocation:
+  gpu_memory: "8GB"
+  system_memory: "60GB"
+  
+  gpu_slots:
+    slot_1:
+      model: "baker-street-vision"
+      size: "4.2GB"
+      always_loaded: true
+      reason: "Visual analysis is core to research workflow"
+      
+    slot_2:
+      size: "3.8GB"
+      rotation_schedule:
+        morning: "baker-street-longcontext"  # Research analysis phase
+        afternoon: "baker-street-creative"   # Report generation phase
+        evening: "baker-street-coder"        # Automation and data processing
+        
+  cpu_memory:
+    always_loaded:
+      - model: "baker-street-embed"
+        size: "274MB"
+        reason: "Instant semantic search"
+      - model: "baker-street-hermes3"
+        size: "4.6GB"
+        reason: "Primary reasoning engine"
+      - model: "baker-street-qwen3"
+        size: "211MB"
+        reason: "Fast response system"
+        
+    on_demand:
+      - model: "baker-street-scientific"
+        size: "4.1GB"
+        trigger: "scientific research queries"
+      - model: "baker-street-legal"
+        size: "4.1GB"
+        trigger: "legal analysis requests"
+      - model: "baker-street-audio"
+        size: "4.2GB"
+        trigger: "audio processing tasks"
+
+# INTEGRATION SETTINGS
+integration:
+  baker_street_api:
+    endpoint: "http://localhost:11434"
+    timeout: 30
+    max_retries: 3
+    
+  model_selection:
+    auto_routing: true
+    fallback_model: "baker-street-qwen3"
+    
+  performance_optimization:
+    gpu_memory_threshold: 0.9  # Switch models when GPU memory > 90%
+    cpu_memory_threshold: 0.8  # Load on-demand when CPU memory > 80%
+    response_time_target: 5     # Target response time in seconds
+    
+  research_workflow:
+    query_analysis: "baker-street-hermes3"
+    visual_analysis: "baker-street-vision"
+    long_document: "baker-street-longcontext"
+    scientific_research: "baker-street-scientific"
+    creative_writing: "baker-street-creative"
+    data_processing: "baker-street-coder"
+    legal_analysis: "baker-street-legal"
+    audio_processing: "baker-street-audio"
+    semantic_search: "baker-street-embed"
+    quick_response: "baker-street-qwen3"
+
+# SPECIALIZED INTEGRATIONS
+specialized_integrations:
+  image_generation:
+    method: "external_api"
+    service: "stable_diffusion_webui"
+    endpoint: "http://localhost:7860"
+    models:
+      - "dreamshaper_8.safetensors"
+      - "deliberate_v2.safetensors"
+      - "anything_v5.safetensors"
+    style_prompts:
+      psychedelic_detective: "amphetamemes style, psychedelic 2D comic book art, detective theme, vibrant colors, surreal elements"
+      
+  music_generation:
+    method: "external_service"
+    service: "musicgen"
+    models:
+      - "facebook/musicgen-medium"
+      - "facebook/musicgen-large"
+    use_cases:
+      - "Ambient soundscapes for research sessions"
+      - "Psychedelic detective theme music"
+      - "Background audio for different research phases"
+      
+  audio_effects:
+    method: "bark_integration"
+    service: "bark"
+    capabilities:
+      - "Text-to-speech for research reports"
+      - "Sound effects generation"
+      - "Voice synthesis for different characters"

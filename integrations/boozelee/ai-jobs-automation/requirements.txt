@@ -1,0 +1,19 @@
+# AI Jobs Automation Project - Requirements
+
+# Core dependencies
+selenium==4.15.0
+requests==2.31.0
+python-dotenv==1.0.0
+imaplib2==3.10
+
+# Development dependencies
+pytest==7.4.0
+black==23.9.1
+flake8==6.1.0
+mypy==1.5.1
+
+# Documentation
+toml==0.10.2
+
+# WATERMARK: PRIMAX-AI-BSP-2025
+© 2025 Bakery Street Project

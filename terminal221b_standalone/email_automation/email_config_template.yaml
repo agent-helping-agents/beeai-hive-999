@@ -1,0 +1,50 @@
+# Email Configuration Template
+# Fill in your details and save as email_config.yaml (DO NOT COMMIT)
+
+email:
+  provider: "gmail"  # or "zoho", "mailgun", "sendgrid"
+  
+  # Gmail Setup
+  gmail:
+    email_address: "your-email@gmail.com"
+    app_password: "xxxx xxxx xxxx xxxx"  # 16-char app password from Google
+    # How to get app password:
+    # 1. Enable 2FA on Google Account
+    # 2. Go to myaccount.google.com/apppasswords
+    # 3. Select Mail + Windows Computer
+    # 4. Copy 16-char password here
+    
+  # Zoho Setup (Alternative)
+  zoho:
+    email_address: "your-email@yourdomain.com"
+    app_password: "xxxxxxxxxxxxx"
+    imap_server: "imap.zoho.com"
+    
+  # Mailgun Setup (API-based)
+  mailgun:
+    domain: "your-domain.mailgun.org"
+    api_key: "key-xxxxxxxxxxxxx"
+    
+recipients:
+  augment: "collaborate@augment.com"
+  gemini: "partnerships@google.com"
+  openai: "partnerships@openai.com"
+  
+tracking:
+  prs_to_monitor:
+    - number: 8254
+      repo: "coollabsio/coolify"
+      issue: 8042
+      bounty: 50
+    - number: 8253
+      repo: "coollabsio/coolify"
+      bounty: "TBD"
+    - number: 8228
+      repo: "coollabsio/coolify"
+      issue: 8154
+      bounty: 6900
+
+monitoring:
+  check_interval_hours: 24
+  log_file: "~/terminal221b/logs/bounty_monitor.log"
+  notification_on_merge: true

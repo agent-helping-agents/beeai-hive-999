@@ -1,0 +1,8 @@
+# requirements.txt for Daytona Staking Agent
+aiohttp
+pydantic
+pyyaml
+cryptography
+requests
+# Specific to Solana integration
+solders # Assuming this is used by SolanaIntegration for actual calls

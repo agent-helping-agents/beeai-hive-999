@@ -1,0 +1,95 @@
+# Baker Street Laboratory - API Test File
+# Use this file with the REST Client extension in VSCodium
+# Each request is separated by ###
+
+### Variables
+@baseUrl = http://localhost:5000
+@apiUrl = {{baseUrl}}/api/v1
+
+### 1. Test API Root Endpoint
+GET {{baseUrl}}/
+Content-Type: application/json
+
+### 2. Get System Information
+GET {{apiUrl}}/system/info
+Content-Type: application/json
+
+### 3. Check System Health
+GET {{apiUrl}}/system/health
+Content-Type: application/json
+
+### 4. Conduct Research - Meaning of Life
+POST {{apiUrl}}/research/conduct
+Content-Type: application/json
+
+{
+    "query": "What is the meaning of life?",
+    "output_dir": "research/api_output"
+}
+
+### 5. Conduct Research - Quantum Computing
+POST {{apiUrl}}/research/conduct
+Content-Type: application/json
+
+{
+    "query": "What are the latest developments in quantum computing?",
+    "output_dir": "research/api_output"
+}
+
+### 6. Conduct Research - AI Ethics
+POST {{apiUrl}}/research/conduct
+Content-Type: application/json
+
+{
+    "query": "What are the ethical implications of artificial intelligence?",
+    "output_dir": "research/api_output"
+}
+
+### 7. Get Research Status (replace session_id with actual ID from previous responses)
+GET {{apiUrl}}/research/status/1a44a2d6
+Content-Type: application/json
+
+### 8. List All Reports
+GET {{apiUrl}}/reports/list
+Content-Type: application/json
+
+### 9. Get Specific Report (replace report_id with actual ID)
+GET {{apiUrl}}/reports/1a44a2d6
+Content-Type: application/json
+
+### 10. Test Error Handling - Invalid Endpoint
+GET {{apiUrl}}/invalid/endpoint
+Content-Type: application/json
+
+### 11. Test Error Handling - Missing Query
+POST {{apiUrl}}/research/conduct
+Content-Type: application/json
+
+{
+    "output_dir": "research/api_output"
+}
+
+### 12. Test CORS - Options Request
+OPTIONS {{apiUrl}}/research/conduct
+Content-Type: application/json
+
+### 13. Batch Research Queries (if implementing batch endpoint)
+# POST {{apiUrl}}/research/batch
+# Content-Type: application/json
+# 
+# {
+#     "queries": [
+#         "What is machine learning?",
+#         "How does blockchain work?",
+#         "What is the future of renewable energy?"
+#     ],
+#     "output_dir": "research/api_output/batch"
+# }
+
+### 14. Health Check with Detailed Response
+GET {{apiUrl}}/system/health?detailed=true
+Content-Type: application/json
+
+### 15. Test API Documentation Access
+GET {{baseUrl}}/docs/
+Accept: text/html

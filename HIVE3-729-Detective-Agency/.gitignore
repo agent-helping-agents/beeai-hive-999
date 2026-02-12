@@ -1,0 +1,35 @@
+# Log files
+*.log
+
+# Hugging Face cache
+.cache/
+huggingface/
+
+# Supabase vault
+supabase_vault.log
+huggingface_integration.log
+
+# Virtual environment
+venv/
+.env
+.env.local
+
+# Test files
+test*.txt
+
+# Radicle node
+radicle-node*.log
+radicle-node*.pid
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build files
+__pycache__/
+*.pyc

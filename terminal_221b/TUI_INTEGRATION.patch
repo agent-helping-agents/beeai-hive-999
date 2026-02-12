@@ -1,0 +1,77 @@
+diff --git a/tui.py b/tui.py
+index 1234567..abcdefg 100644
+--- a/tui.py
++++ b/tui.py
+@@ -55,6 +55,11 @@ from agents.mantis_mail.mantis_agent import create_mantis_agent
+ from tools.art.caterpillar_artist import caterpillar_ansi, caterpillar_catalog
+ 
+ # Backend management
+ from backend.llm_router import router, BackendType
+ from backend.config_manager import get_config, switch_backend, AgentBackend, print_status
+ 
++# Terminal 221b integration
++from terminal_221b.integration.hive_bridge import (
++    register_with_tui,
++    handle_221b_command,
++    on_alt_d,
++)
+ 
+ # ============================================================================
+ # TUI STATE
+@@ -186,6 +191,15 @@ def setup_keybindings(app, state, layout_components):
+         state.current_agent_name = "Mantis Mail"
+         update_ui_for_mode(state, layout_components)
+ 
++    # Terminal 221b - Detective mode
++    @kb.add('alt-d')
++    def switch_detective(event):
++        on_alt_d(state)
++        update_ui_for_mode(state, layout_components)
++        state.add_message("System", f"🕵️ Detective {state.current_agent_name} on the case!")
++
+     return kb
+ 
+ # ============================================================================
+@@ -250,6 +264,15 @@ async def handle_command(cmd: str, state: HiveTUIState) -> str:
+         return await handle_art_command(args, state)
+     elif cmd_name == "catalog":
+         return handle_catalog_command()
++    # Terminal 221b commands
++    elif cmd_name == "221b":
++        return await handle_221b_command(args, state)
++    elif cmd_name == "detective":
++        from terminal_221b.integration.hive_bridge import handle_detective_command
++        return await handle_detective_command(args, state)
++    elif cmd_name == "investigate":
++        from terminal_221b.integration.hive_bridge import handle_investigate_command
++        return await handle_investigate_command(args, state)
++    elif cmd_name == "simulate":
++        from terminal_221b.integration.hive_bridge import handle_simulate_command
++        return await handle_simulate_command(args, state)
+     elif cmd_name == "help":
+         return get_help_text()
+     else:
+@@ -285,6 +308,12 @@ def get_help_text() -> str:
+         ":art <topic>    - Display ANSI art\n"
+         ":catalog        - List available art\n"
+         ":status         - Show backend status\n"
++        "\n"
++        "🕵️ Terminal 221b Commands:\n"
++        ":221b <cmd>     - 221b control center (try :221b help)\n"
++        ":detective <p>  - Switch detective personality\n"
++        ":investigate <q>- Start investigation\n"
++        ":simulate <tx>  - Simulate transaction\n"
+         "\n"
+         "Key Bindings:\n"
+         "Alt+Q           - Queen Bee\n"
+@@ -295,6 +324,8 @@ def get_help_text() -> str:
+         "Alt+8           - Worker 8\n"
+         "Alt+9           - Worker 9\n"
+         "Alt+G           - Government Drone\n"
+-        "Alt+X           - Mantis Mail"
++        "Alt+X           - Mantis Mail\n"
++        "Alt+D           - Detective Mode\n"
++        "Alt+Shift+D     - Cycle Detective Personalities"
+     )
+ 
+ # ============================================================================

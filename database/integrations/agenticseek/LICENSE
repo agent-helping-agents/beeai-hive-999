@@ -1,0 +1,17 @@
+GPL-3.0 License Notice
+
+This directory contains integration code for AgenticSeek, which is licensed
+under GPL-3.0.
+
+The AgenticSeek project: https://github.com/Fosowl/agenticSeek
+License: GPL-3.0
+
+This integration code is provided as a separate module to maintain clean
+license separation between:
+- Energetic Lexicon Core (Proprietary)
+- AgenticSeek Integration (GPL-3.0)
+
+Communication between the core and this integration happens ONLY via
+JSON/REST API boundaries to prevent license contamination.
+
+See: https://www.gnu.org/licenses/gpl-3.0.html

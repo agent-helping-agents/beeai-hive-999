@@ -1,0 +1,103 @@
+{
+  "name": "baker-street-laboratory-desktop",
+  "version": "1.0.0",
+  "description": "Psychedelic Detective-themed AI Research Desktop Application",
+  "main": "src/main.js",
+  "author": "Baker Street Laboratory",
+  "license": "MIT",
+  "homepage": "https://github.com/BoozeLee/Baker-Street-Laboratory",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "dev": "electron . --dev --no-sandbox",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "electron-devtools-installer": "^3.2.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.7",
+    "three": "^0.159.0",
+    "gsap": "^3.12.2",
+    "particles.js": "^2.0.0"
+  },
+  "build": {
+    "appId": "com.bakerstreet.laboratory",
+    "productName": "Baker Street Laboratory",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../research",
+        "to": "research",
+        "filter": ["**/*"]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Science",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "keywords": [
+    "ai",
+    "research",
+    "detective",
+    "psychedelic",
+    "sherlock",
+    "laboratory",
+    "electron",
+    "desktop"
+  ]
+}

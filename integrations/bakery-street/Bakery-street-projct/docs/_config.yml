@@ -1,0 +1,55 @@
+title: "Bakery Street Project"
+description: "Revolutionary AI Research & Development | Neuromorphic Computing & Advanced AI Solutions"
+url: "https://bakery-street-projct.github.io"
+baseurl: "/Bakery-street-projct"
+
+# Organization info
+organization:
+  name: "Bakery Street Project"
+  location: "Amsterdam, Netherlands"
+  email: "iamthatiamresearch@gmail.com"
+  twitter: "BakeryStreetAI"
+  github: "Bakery-street-projct"
+
+# Jekyll settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Bakery Street Project"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Custom variables
+ai_focus_areas:
+  - "Neuromorphic Computing"
+  - "Multi-Agent Systems"
+  - "Data Streamlining"
+  - "Sentiment Analysis"
+  - "Research Automation"
+
+# Social links
+social_links:
+  github: "https://github.com/Bakery-street-projct"
+  twitter: "https://twitter.com/BakeryStreetAI"
+  email: "mailto:iamthatiamresearch@gmail.com"

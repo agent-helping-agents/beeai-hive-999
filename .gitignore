@@ -1,0 +1,120 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*~
+\#*\#
+._*
+
+# Git
+.git/
+!.gitignore
+
+# Solana binaries
+solana_release/bin/solana*
+solana_release/bin/spl-token
+solana_release/bin/solang
+solana_release/bin/rbpf-cli
+solana_release/bin/cargo-*
+solana_release/bin/perf-libs/
+solana_release/bin/deps/
+
+# Rust build artifacts
+target/
+
+# Node modules
+node_modules/
+
+# Database files
+*.db
+
+# Env files with secrets
+.env
+.env.*
+!.env.template
+!.env.example
+
+# Logs
+*.log
+
+# Cache
+.ruff_cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Vector DB data
+data/vectors/
+*.sqlite3
+
+# Compiled binaries
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/github_ai_agent
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/chat
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/server
+integrations/bakery-street/ai-coding-agents/go-ai-coder/go-ai-coder
+integrations/boozelee/universal-treasury/treasury
+integrations/boozelee/gemini-monetization/json
+integrations/boozelee/gemini-monetization/os
+integrations/boozelee/gemini-monetization/shutil
+
+# Large binary images (keep in .gitignore, reference via LFS if needed)
+*.png
+*.jpg
+*.jpeg
+!art/**/*.ans
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/go-ai-coder/github_ai_agent
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/go-ai-coder/chat
+
+# Files containing secrets (removed by push protection)
+integrations/bakery-street/BakerCode/CREDENTIALS_CHECKLIST.md
+integrations/bakery-street/BakerCode/DISCORD_BOT_SETUP_GUIDE.md
+integrations/boozelee/codex-superlab/setup_full_env.sh
+integrations/boozelee/codex-superlab/bootstrap_codex_superlab
+integrations/bakery-street/ai-development-framework/USAGE_GUIDE.md
+integrations/bakery-street/ai-development-framework/activate-ai.sh
+integrations/bakery-street/BakerCode/codex-superlab-recreation/DEPLOYMENT_INSTRUCTIONS.md
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/DOWNLOADFILESSUPERBRAIN2.0/script_5.py
+integrations/bakery-street/PRIMAX-ai/Primsx/codex/DOWNLOADFILESSUPERBRAIN2.0/SETUP_GUIDE.md
+integrations/boozelee/codex-superlab/setup_github_credentials.sh
+integrations/boozelee/codex-superlab/script_5.py
+integrations/boozelee/codex-superlab/SETUP_GUIDE.md

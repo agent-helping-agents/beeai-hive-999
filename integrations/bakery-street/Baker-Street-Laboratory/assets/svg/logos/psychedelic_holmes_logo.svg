@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Psychedelic Sherlock Holmes Logo - Amphetamemes Style -->
+  
+  <defs>
+    <!-- Psychedelic gradients -->
+    <radialGradient id="psychedelicGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FF00FF;stop-opacity:1"/>
+      <stop offset="25%" style="stop-color:#00FFFF;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#FFFF00;stop-opacity:1"/>
+      <stop offset="75%" style="stop-color:#FF6600;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#9900FF;stop-opacity:1"/>
+    </radialGradient>
+    
+    <!-- Kaleidoscopic pattern -->
+    <linearGradient id="kaleidoscope" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF1493;stop-opacity:0.8"/>
+      <stop offset="20%" style="stop-color:#00CED1;stop-opacity:0.8"/>
+      <stop offset="40%" style="stop-color:#FFD700;stop-opacity:0.8"/>
+      <stop offset="60%" style="stop-color:#32CD32;stop-opacity:0.8"/>
+      <stop offset="80%" style="stop-color:#FF4500;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#8A2BE2;stop-opacity:0.8"/>
+    </linearGradient>
+    
+    <!-- Neon glow filter -->
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Fractal pattern -->
+    <pattern id="fractalPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="3" fill="#FF00FF" opacity="0.3"/>
+      <circle cx="5" cy="5" r="1.5" fill="#00FFFF" opacity="0.5"/>
+      <circle cx="15" cy="15" r="1.5" fill="#FFFF00" opacity="0.5"/>
+    </pattern>
+    
+    <!-- Swirling animation -->
+    <animateTransform id="swirl" attributeName="transform" type="rotate" 
+                      values="0 200 100;360 200 100" dur="20s" repeatCount="indefinite"/>
+  </defs>
+  
+  <!-- Background kaleidoscopic dreamscape -->
+  <rect width="400" height="200" fill="url(#kaleidoscope)" opacity="0.3"/>
+  
+  <!-- Swirling thought bubbles -->
+  <g opacity="0.6">
+    <circle cx="50" cy="50" r="15" fill="#FF1493" opacity="0.4">
+      <animate attributeName="r" values="15;25;15" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="150" r="20" fill="#00CED1" opacity="0.4">
+      <animate attributeName="r" values="20;30;20" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="80" cy="160" r="12" fill="#FFD700" opacity="0.4">
+      <animate attributeName="r" values="12;18;12" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Holmes silhouette with fractal trenchcoat -->
+  <g transform="translate(50, 30)">
+    <!-- Trenchcoat with fractal gears -->
+    <path d="M20 120 L20 80 Q20 70 30 70 L50 70 Q60 70 60 80 L60 120 Q60 130 50 130 L30 130 Q20 130 20 120 Z" 
+          fill="url(#fractalPattern)" stroke="#8A2BE2" stroke-width="2" filter="url(#neonGlow)"/>
+    
+    <!-- Body -->
+    <ellipse cx="40" cy="100" rx="15" ry="25" fill="#2C1810" opacity="0.8"/>
+    
+    <!-- Head silhouette -->
+    <circle cx="40" cy="60" r="18" fill="#1A1A1A" opacity="0.9"/>
+    
+    <!-- Iconic deerstalker hat -->
+    <path d="M25 50 Q40 45 55 50 Q55 40 40 40 Q25 40 25 50 Z" 
+          fill="#8B4513" stroke="url(#psychedelicGradient)" stroke-width="1"/>
+    
+    <!-- Pipe with rainbow smoke -->
+    <line x1="58" y1="65" x2="75" y2="60" stroke="#8B4513" stroke-width="3"/>
+    <circle cx="75" cy="60" r="3" fill="#654321"/>
+    
+    <!-- Psychedelic smoke -->
+    <g opacity="0.7">
+      <path d="M75 60 Q85 55 90 45 Q95 35 85 30" 
+            stroke="#FF00FF" stroke-width="2" fill="none" opacity="0.8">
+        <animate attributeName="d" 
+                 values="M75 60 Q85 55 90 45 Q95 35 85 30;M75 60 Q80 50 95 40 Q100 30 90 25;M75 60 Q85 55 90 45 Q95 35 85 30" 
+                 dur="4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M75 60 Q80 50 85 40 Q90 30 80 25" 
+            stroke="#00FFFF" stroke-width="2" fill="none" opacity="0.6">
+        <animate attributeName="d" 
+                 values="M75 60 Q80 50 85 40 Q90 30 80 25;M75 60 Q85 45 95 35 Q100 25 85 20;M75 60 Q80 50 85 40 Q90 30 80 25" 
+                 dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Magnifying glass with rainbow refraction -->
+  <g transform="translate(150, 80)">
+    <!-- Glass circle with rainbow effect -->
+    <circle cx="0" cy="0" r="25" fill="none" stroke="url(#psychedelicGradient)" stroke-width="4" filter="url(#neonGlow)"/>
+    
+    <!-- Rainbow light refraction -->
+    <g opacity="0.8">
+      <line x1="-15" y1="-15" x2="15" y2="15" stroke="#FF0000" stroke-width="2" opacity="0.6"/>
+      <line x1="-10" y1="-10" x2="20" y2="20" stroke="#FF7F00" stroke-width="2" opacity="0.6"/>
+      <line x1="-5" y1="-5" x2="25" y2="25" stroke="#FFFF00" stroke-width="2" opacity="0.6"/>
+      <line x1="0" y1="0" x2="30" y2="30" stroke="#00FF00" stroke-width="2" opacity="0.6"/>
+      <line x1="5" y1="5" x2="35" y2="35" stroke="#0000FF" stroke-width="2" opacity="0.6"/>
+      <line x1="10" y1="10" x2="40" y2="40" stroke="#4B0082" stroke-width="2" opacity="0.6"/>
+      <line x1="15" y1="15" x2="45" y2="45" stroke="#9400D3" stroke-width="2" opacity="0.6"/>
+    </g>
+    
+    <!-- Handle -->
+    <line x1="18" y1="18" x2="35" y2="35" stroke="#FFD700" stroke-width="6" stroke-linecap="round" filter="url(#neonGlow)"/>
+    
+    <!-- Inner reflection -->
+    <circle cx="-8" cy="-8" r="6" fill="#FFFFFF" opacity="0.4"/>
+  </g>
+  
+  <!-- Morphing puzzle pieces as eyes -->
+  <g transform="translate(280, 60)">
+    <!-- Left puzzle eye -->
+    <path d="M0 0 L15 0 Q20 -5 25 0 L40 0 L40 15 Q45 20 40 25 L40 40 L25 40 Q20 45 15 40 L0 40 L0 25 Q-5 20 0 15 Z" 
+          fill="#FF1493" opacity="0.7" filter="url(#neonGlow)">
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="0 20 20;360 20 20" dur="8s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Right puzzle eye -->
+    <path d="M50 0 L65 0 Q70 -5 75 0 L90 0 L90 15 Q95 20 90 25 L90 40 L75 40 Q70 45 65 40 L50 40 L50 25 Q45 20 50 15 Z" 
+          fill="#00CED1" opacity="0.7" filter="url(#neonGlow)">
+      <animateTransform attributeName="transform" type="rotate" 
+                        values="360 70 20;0 70 20" dur="6s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Art Nouveau ribbons with hidden codes -->
+  <g opacity="0.6">
+    <path d="M20 180 Q100 160 200 180 Q300 200 380 180" 
+          stroke="url(#psychedelicGradient)" stroke-width="3" fill="none" filter="url(#neonGlow)">
+      <animate attributeName="d" 
+               values="M20 180 Q100 160 200 180 Q300 200 380 180;M20 180 Q100 200 200 160 Q300 180 380 180;M20 180 Q100 160 200 180 Q300 200 380 180" 
+               dur="6s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Hidden code symbols -->
+    <text x="100" y="175" font-family="monospace" font-size="8" fill="#FFD700" opacity="0.8">221B</text>
+    <text x="200" y="185" font-family="monospace" font-size="8" fill="#FF1493" opacity="0.8">BSL</text>
+    <text x="300" y="175" font-family="monospace" font-size="8" fill="#00CED1" opacity="0.8">∞</text>
+  </g>
+  
+  <!-- Glowing chemistry beakers -->
+  <g transform="translate(320, 120)">
+    <!-- Beaker 1 -->
+    <path d="M0 10 L0 0 L15 0 L15 10 L20 25 L-5 25 Z" 
+          fill="none" stroke="#00FF00" stroke-width="2" filter="url(#neonGlow)"/>
+    <path d="M1 12 L14 12 L18 23 L-3 23 Z" fill="#00FF00" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Beaker 2 -->
+    <path d="M25 10 L25 0 L40 0 L40 10 L45 25 L20 25 Z" 
+          fill="none" stroke="#FF00FF" stroke-width="2" filter="url(#neonGlow)"/>
+    <path d="M26 12 L39 12 L43 23 L22 23 Z" fill="#FF00FF" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Bubbling effects -->
+    <circle cx="7" cy="18" r="1" fill="#FFFFFF" opacity="0.8">
+      <animate attributeName="cy" values="18;8;18" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="32" cy="20" r="1.5" fill="#FFFFFF" opacity="0.8">
+      <animate attributeName="cy" values="20;10;20" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Main title with neon effect -->
+  <text x="200" y="40" font-family="serif" font-size="24" font-weight="bold" 
+        text-anchor="middle" fill="url(#psychedelicGradient)" filter="url(#neonGlow)">
+    BAKER STREET
+  </text>
+  
+  <!-- Subtitle with glitch effect -->
+  <text x="200" y="65" font-family="serif" font-size="18" 
+        text-anchor="middle" fill="#FFD700" filter="url(#neonGlow)">
+    LABORATORY
+    <animate attributeName="opacity" values="1;0.8;1;0.9;1" dur="0.1s" repeatCount="indefinite"/>
+  </text>
+  
+  <!-- Psychedelic tagline -->
+  <text x="200" y="85" font-family="monospace" font-size="10" font-style="italic"
+        text-anchor="middle" fill="#FF1493" opacity="0.9">
+    ~ Traversing Kaleidoscopic Dreamscapes of Knowledge ~
+  </text>
+  
+  <!-- Butterfly wings (cosmic secrets) -->
+  <g transform="translate(30, 100)" opacity="0.5">
+    <path d="M0 0 Q-10 -10 -5 -20 Q0 -15 5 -20 Q10 -10 0 0" 
+          fill="#FF00FF" opacity="0.6">
+      <animateTransform attributeName="transform" type="scale" 
+                        values="1;1.2;1" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0 0 Q-10 10 -5 20 Q0 15 5 20 Q10 10 0 0" 
+          fill="#00FFFF" opacity="0.6">
+      <animateTransform attributeName="transform" type="scale" 
+                        values="1;1.2;1" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Conspiracy sigils -->
+  <g transform="translate(350, 40)" opacity="0.4">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#9400D3" stroke-width="1"/>
+    <path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#9400D3" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3" fill="#9400D3" opacity="0.5"/>
+  </g>
+  
+  <!-- Global swirling animation -->
+  <animateTransform attributeName="transform" type="rotate" 
+                    values="0 200 100;1 200 100;0 200 100" dur="30s" repeatCount="indefinite"/>
+</svg>

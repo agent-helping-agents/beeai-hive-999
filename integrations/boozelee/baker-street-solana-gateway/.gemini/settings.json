@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "BeforeAgent": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "inject-lore",
+            "type": "command",
+            "command": "./.gemini/hooks/inject-lore.sh"
+          }
+        ]
+      }
+    ],
+    "BeforeTool": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "decentralization-guard",
+            "type": "command",
+            "command": "node ./.gemini/hooks/block-google-apis.js"
+          }
+        ]
+      }
+    ]
+  }
+}

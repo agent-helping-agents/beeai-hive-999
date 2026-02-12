@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baker Street Laboratory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(26, 15, 8, 0.8), rgba(44, 24, 16, 0.8), rgba(139, 69, 19, 0.8)),
+                url('assets/images/backgrounds/detective_bg.png') center/cover no-repeat;
+            color: #F5F5DC;
+            font-family: 'Georgia', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .splash-container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .splash-logo {
+            margin-bottom: 2rem;
+        }
+
+        .splash-logo-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(218, 165, 32, 0.6);
+            animation: logo-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logo-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(218, 165, 32, 0.6);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(218, 165, 32, 0.9);
+            }
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #DAA520;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #D3C7A8;
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(218, 165, 32, 0.3);
+            border-top: 4px solid #DAA520;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        .loading-text {
+            font-size: 1rem;
+            color: #D3C7A8;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .background-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #DAA520;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+
+        @keyframes glow {
+            0%, 100% { 
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px #DAA520; 
+            }
+            50% { 
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px #DAA520, 0 0 30px #DAA520; 
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0); 
+                opacity: 0; 
+            }
+            10%, 90% { 
+                opacity: 0.6; 
+            }
+            50% { 
+                transform: translateY(-10px) scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        .version {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.8rem;
+            color: #8B4513;
+            opacity: 0.7;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #DAA520;
+            margin-top: 1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="splash-container">
+        <div class="splash-logo">
+            <img src="assets/images/ui/main_logo.png" alt="Baker Street Laboratory" class="splash-logo-image">
+        </div>
+        <div class="logo">Baker Street Laboratory</div>
+        <div class="subtitle">AI-Augmented Research Framework</div>
+        
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Initializing kaleidoscopic research environment...</div>
+        
+        <div class="tagline">Traversing dreamscapes of knowledge with detective precision</div>
+    </div>
+
+    <div class="version">v1.0.0</div>
+
+    <script>
+        // Simulate loading progress
+        const loadingTexts = [
+            'Initializing kaleidoscopic research environment...',
+            'Loading psychedelic detective modules...',
+            'Connecting to research APIs...',
+            'Preparing visual effects...',
+            'Ready to investigate mysteries!'
+        ];
+
+        let currentTextIndex = 0;
+        const loadingTextElement = document.querySelector('.loading-text');
+
+        const updateLoadingText = () => {
+            if (currentTextIndex < loadingTexts.length - 1) {
+                currentTextIndex++;
+                loadingTextElement.textContent = loadingTexts[currentTextIndex];
+                setTimeout(updateLoadingText, 600);
+            }
+        };
+
+        setTimeout(updateLoadingText, 600);
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+# AI Jobs Automation Project - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.venv/
+venv/
+ENV/
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Data
+*.sqlite
+*.db
+*.log
+
+# Credentials
+auth/
+secrets/
+credentials/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Coverage
+.coverage
+*.cover
+
+# Documentation
+_docs/
+
+# Tests
+*.pytest_cache*
+
+# Misc
+*.bak
+*.tmp
+*.old
+
+# WATERMARK: PRIMAX-AI-BSP-2025
+© 2025 Bakery Street Project

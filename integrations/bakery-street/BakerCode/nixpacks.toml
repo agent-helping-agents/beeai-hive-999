@@ -1,0 +1,57 @@
+# nixpacks.toml - FINAL ATTEMPT TO FIX NIXPACKS ERROR
+
+[phases.setup]
+nixPkgs = ["...", "python39Packages.virtualenv"]
+
+[start]
+cmd = "gunicorn --chdir codex-superlab-recreation web_dashboard:app --bind 0.0.0.0:$PORT --workers 2"
+
+[phases.setup]
+nixPkgs = ["...", "python39"]
+
+[start]
+cmd = "gunicorn --chdir codex-superlab-recreation web_dashboard:app --bind 0.0.0.0:$PORT --workers 2"
+
+[phases.setup]
+nixPkgs = ["...", "python39"]
+
+[start]
+cmd = "gunicorn --chdir codex-superlab-recreation web_dashboard:app --bind 0.0.0.0:$PORT --workers 2"
+
+[phases.setup]
+nixPkgs = ["...", "python39"]
+
+[start]
+cmd = "gunicorn --chdir codex-superlab-recreation web_dashboard:app --bind 0.0.0.0:$PORT --workers 2"
+
+[phases.setup]
+nixPkgs = ["...", "python39"]
+
+[start]
+cmd = "gunicorn --chdir codex-superlab-recreation web_dashboard:app --bind 0.0.0.0:$PORT --workers 2"
+# This file MUST override the broken Nixpacks Python 3.9 provider
+
+[phases.setup]
+# CRITICAL: Override the faulty default package list (python39, pip)
+# The "..." syntax preserves essential system dependencies
+# Only 'python39' is specified - pip is bundled inside it
+# Adding common system dependencies that might be needed
+nixPkgs = [
+    "...", 
+    "python39",
+    "gcc",
+    "gnumake",
+    "pkg-config"
+]
+
+[phases.install]
+# Ensure pip install uses the correct Python version
+cmds = ["python3.9 -m pip install -r requirements.txt"]
+
+[phases.build]
+# No build phase needed for this app
+cmds = ["echo 'Build phase complete'"]
+
+[start]
+# EXPLICIT production start command
+cmd = "cd codex-superlab-recreation && python3.9 -m gunicorn web_dashboard:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120"

@@ -1,0 +1,25 @@
+# LangChain RAG Configuration
+
+embeddings:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  device: cpu  # Use 'cuda' if GPU available
+
+vector_store:
+  type: faiss
+  index_path: data/faiss_index
+  similarity_metric: cosine
+
+text_splitter:
+  chunk_size: 1000
+  chunk_overlap: 200
+  separators: ["\n\n", "\n", " ", ""]
+
+retrieval:
+  k: 4  # Number of documents to retrieve
+  score_threshold: 0.7
+
+llm:
+  provider: anthropic
+  model: claude-sonnet-4-5-20250929
+  max_tokens: 2048
+  temperature: 0.7

@@ -1,0 +1,196 @@
+# Generic .gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+dynamodb_local/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# vscode extensions
+.vscode/extensions
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# DART
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.build.log
+
+# Android
+android/app/build
+android/app/.gradle
+android/app/src/main/res/drawable-*/
+android/app/src/debug/
+android/app/src/main/assets/flutter_assets/
+
+# iOS
+ios/Pods/
+ios/Flutter/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+# macOS
+macos/Flutter/
+macos/.symlinks/
+macos/Flutter/Flutter.framework
+macos/Flutter/Flutter.podspec
+
+# Windows
+windows/Flutter/
+windows/.symlinks/
+windows/Flutter/Flutter.framework
+windows/Flutter/Flutter.podspec
+
+# Linux
+linux/Flutter/
+linux/.symlinks/
+linux/Flutter/Flutter.framework
+linux/Flutter/Flutter.podspec
+
+# Web
+web/build/
+
+# IDE (JetBrains)
+.idea/
+*.iml
+
+# Misc
+*.rlib
+*.so
+*.dll
+*.dylib
+*.test
+*.dSYM/
+
+# Rust
+**/target/
+
+# Go
+go.mod
+go.sum
+

@@ -1,0 +1,57 @@
+name: 💬 Social Automation
+
+on:
+  schedule:
+    - cron: '0 8,16 * * *'  # 8 AM & 4 PM daily
+  workflow_dispatch:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  community-engagement:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install anthropic openai langchain-core requests
+
+      - name: Smart reply to mentions
+        if: github.event_name == 'issue_comment' && contains(github.event.comment.body, '@')
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python social_automator.py --mode reply --comment-id $COMMENT_ID
+
+      - name: Daily community engagement
+        if: github.event.schedule == '0 8 * * *'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python social_automator.py --mode engage --daily
+
+      - name: Generate weekly summary
+        if: github.event.schedule == '0 8 * * 1'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/weekly_summary.py --post-issue

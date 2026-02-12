@@ -1,0 +1,134 @@
+name: Bakery Street Project - Organization Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '0 0 * * 1'  # Weekly on Monday
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+        
+    - name: Run organization tests
+      run: |
+        python tests/test_organization.py
+        
+    - name: Validate README structure
+      run: |
+        # Check README exists and has content
+        if [[ ! -f "README.md" ]]; then
+          echo "Error: README.md not found"
+          exit 1
+        fi
+        
+        # Check README size (should be substantial)
+        if [[ $(wc -c < README.md) -lt 5000 ]]; then
+          echo "Warning: README.md is quite short"
+        fi
+        
+        # Check for essential sections
+        for section in "Mission" "Vision" "Featured Projects" "Technology Stack"; do
+          if ! grep -q "$section" README.md; then
+            echo "Error: Missing '$section' section in README"
+            exit 1
+          fi
+        done
+        
+        echo "✅ README structure validation passed"
+        
+    - name: Validate organization logo
+      run: |
+        if [[ ! -f "image.jpg" ]]; then
+          echo "Error: Organization logo (image.jpg) not found"
+          exit 1
+        fi
+        
+        # Check logo file size (should be reasonable)
+        logo_size=$(wc -c < image.jpg)
+        if [[ $logo_size -lt 1000 ]]; then
+          echo "Warning: Organization logo seems very small"
+        fi
+        
+        echo "✅ Organization logo validation passed"
+        
+    - name: Check project structure
+      run: |
+        # Check for essential files
+        for file in "README.md" "requirements.txt" "image.jpg"; do
+          if [[ ! -f "$file" ]]; then
+            echo "Error: Missing essential file: $file"
+            exit 1
+          fi
+        done
+        
+        # Check for test directory
+        if [[ ! -d "tests" ]]; then
+          echo "Error: Tests directory not found"
+          exit 1
+        fi
+        
+        echo "✅ Project structure validation passed"
+        
+    - name: Validate requirements.txt
+      run: |
+        if [[ -f "requirements.txt" ]]; then
+          # Check for common AI/ML packages
+          if ! grep -q "tensorflow\|pytorch\|scikit-learn" requirements.txt; then
+            echo "Warning: No major AI/ML frameworks found in requirements.txt"
+          fi
+          
+          # Check for web development packages
+          if ! grep -q "fastapi\|flask\|django" requirements.txt; then
+            echo "Warning: No web frameworks found in requirements.txt"
+          fi
+          
+          echo "✅ Requirements.txt validation passed"
+        fi
+        
+    - name: Check git repository
+      run: |
+        # Verify this is a git repository
+        if [[ ! -d ".git" ]]; then
+          echo "Error: Not a git repository"
+          exit 1
+        fi
+        
+        # Check for remote origin
+        if ! git remote get-url origin >/dev/null 2>&1; then
+          echo "Warning: No remote origin configured"
+        fi
+        
+        echo "✅ Git repository validation passed"
+        
+    - name: Generate test report
+      if: always()
+      run: |
+        echo "📊 Test Summary for Bakery Street Project"
+        echo "=========================================="
+        echo "Python Version: ${{ matrix.python-version }}"
+        echo "Repository: $(git remote get-url origin 2>/dev/null || echo 'No remote')"
+        echo "Last Commit: $(git log -1 --format='%h %s' 2>/dev/null || echo 'No commits')"
+        echo "Files: $(find . -type f | wc -l)"
+        echo "Size: $(du -sh . | cut -f1)"

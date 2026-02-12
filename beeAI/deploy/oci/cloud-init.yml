@@ -1,0 +1,77 @@
+#cloud-config
+# Cloud-init configuration for beeAI on OCI
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - curl
+  - wget
+  - git
+  - vim
+  - htop
+  - ufw
+  - fail2ban
+  - docker.io
+  - docker-compose
+
+users:
+  - default
+  - name: beeai
+    gecos: beeAI Service User
+    groups: docker
+    sudo: false
+    shell: /bin/bash
+
+runcmd:
+  # Configure firewall
+  - ufw default deny incoming
+  - ufw default allow outgoing
+  - ufw allow 22/tcp
+  - ufw allow 80/tcp
+  - ufw allow 443/tcp
+  - ufw allow 22181/tcp
+  - ufw --force enable
+
+  # Start and enable services
+  - systemctl enable docker
+  - systemctl start docker
+  - systemctl enable fail2ban
+  - systemctl start fail2ban
+
+  # Clone beeAI repository
+  - cd /opt && git clone https://github.com/BoozeLee/beeAI.git || true
+  - cd /opt/beeAI && git pull || true
+
+  # Generate secret key
+  - |
+    export T221B_SECRET_KEY=$(openssl rand -hex 32)
+    echo "T221B_SECRET_KEY=$T221B_SECRET_KEY" >> /opt/beeAI/.env
+    echo "ENV=production" >> /opt/beeAI/.env
+    echo "LOG_LEVEL=info" >> /opt/beeAI/.env
+
+  # Set permissions
+  - chown -R beeai:beeai /opt/beeAI
+
+  # Start beeAI with Docker Compose
+  - cd /opt/beeAI && docker-compose -f deploy/docker/docker-compose.yml up -d
+
+  # Create a simple health check script
+  - |
+    cat > /usr/local/bin/beeai-health << 'EOF'
+    #!/bin/bash
+    curl -s http://localhost:22181/health | jq .
+    EOF
+    chmod +x /usr/local/bin/beeai-health
+
+final_message: |
+  beeAI has been installed!
+  
+  To check status:
+    sudo beeai-health
+    
+  To view logs:
+    cd /opt/beeAI && docker-compose -f deploy/docker/docker-compose.yml logs -f
+    
+  The API is available at:
+    http://$(curl -s ifconfig.me):22181

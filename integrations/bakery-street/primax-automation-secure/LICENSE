@@ -1,0 +1,207 @@
+PROPRIETARY SOFTWARE LICENSE
+
+================================================================================
+PRIMAX AUTOMATION CONSTRUCTION - PRIVATE PROPERTY LICENSE
+================================================================================
+
+Copyright © 2025 Bakery Street Project - Kiliaan Vanvoorden
+All Rights Reserved.
+
+WATERMARK: PRIMAX-AI-BSP-2025
+CLASSIFICATION: PROPRIETARY & CONFIDENTIAL
+
+================================================================================
+1. DEFINITIONS
+================================================================================
+
+"Software" refers to the PRIMAX Automation Construction system, including all
+source code, documentation, configuration files, scripts, and related materials.
+
+"Owner" refers to Bakery Street Project and Kiliaan Vanvoorden.
+
+"Licensee" refers to any individual or entity accessing this Software.
+
+================================================================================
+2. LICENSE GRANT
+================================================================================
+
+This is PRIVATE PROPERTY. NO LICENSE IS GRANTED for commercial use,
+redistribution, modification, or any other purpose without explicit written
+permission from the Owner.
+
+2.1 PERSONAL USE ONLY
+The Software may be viewed and studied for personal, educational, and
+non-commercial purposes ONLY by authorized individuals.
+
+2.2 NO COMMERCIAL USE
+Commercial use, including but not limited to:
+  - Selling or licensing the Software
+  - Using the Software in commercial products or services
+  - Deriving commercial benefit from the Software
+  - Incorporating the Software into commercial offerings
+
+is STRICTLY PROHIBITED without explicit written license from the Owner.
+
+================================================================================
+3. RESTRICTIONS
+================================================================================
+
+3.1 NO REDISTRIBUTION
+Licensee may NOT:
+  - Distribute, publish, or share the Software
+  - Upload to public repositories or platforms
+  - Share with third parties
+  - Create derivative works for distribution
+
+3.2 NO MODIFICATION FOR REDISTRIBUTION
+Any modifications, adaptations, or derivative works:
+  - Remain the exclusive property of the Owner
+  - May NOT be distributed or shared
+  - Require explicit written permission for commercial use
+
+3.3 NO REVERSE ENGINEERING FOR COMMERCIAL PURPOSES
+Reverse engineering, decompilation, or disassembly for commercial purposes
+is strictly prohibited.
+
+================================================================================
+4. INTELLECTUAL PROPERTY RIGHTS
+================================================================================
+
+4.1 COPYRIGHT
+All copyright, trademark, patent, and other intellectual property rights
+in and to the Software are and shall remain the exclusive property of the Owner.
+
+4.2 WATERMARK PROTECTION
+All files contain the watermark "PRIMAX-AI-BSP-2025" and copyright notices.
+These watermarks MUST NOT be removed, altered, or obscured.
+
+4.3 TRADE SECRETS
+The Software contains proprietary algorithms, methodologies, and trade secrets
+that are protected under applicable trade secret laws.
+
+================================================================================
+5. PRIMECORE SECURITY INTEGRATION
+================================================================================
+
+This Software is protected by PRIMECORE Security System from Smoothoperator:
+
+5.1 ENCRYPTED VAULT STORAGE
+Sensitive credentials and secrets are stored in GPG-encrypted vaults using
+AES256 encryption with pinentry-mode loopback.
+
+5.2 CREDENTIAL ISOLATION
+All API keys, tokens, and sensitive data are:
+  - Stored in encrypted .env files
+  - Excluded from version control (.gitignore)
+  - Protected by PRIME_GUARDIAN vault manager
+
+5.3 WATERMARK ENFORCEMENT
+All source files include mandatory copyright headers enforced by
+PRIMECORE security policies.
+
+================================================================================
+6. NO WARRANTIES
+================================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE OWNER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
+
+================================================================================
+7. TERMINATION
+================================================================================
+
+This license is effective until terminated. The Owner reserves the right to
+terminate this license at any time for any reason. Upon termination:
+  - Licensee must cease all use of the Software
+  - Licensee must destroy all copies in their possession
+
+================================================================================
+8. LEGAL ENFORCEMENT
+================================================================================
+
+8.1 JURISDICTION
+This license shall be governed by the laws applicable to the Owner's jurisdiction.
+
+8.2 VIOLATIONS
+Unauthorized use, copying, modification, or distribution may result in:
+  - Civil liability for damages
+  - Criminal prosecution under applicable laws
+  - Injunctive relief
+  - Attorney's fees and costs
+
+8.3 REPORTING VIOLATIONS
+Report unauthorized use to: kiliaan@bakerstreet221b.store
+
+================================================================================
+9. AUTHORIZED COMMERCIAL LICENSING
+================================================================================
+
+For commercial use, integration, or redistribution rights, contact:
+
+  Bakery Street Project
+  Email: kiliaan@bakerstreet221b.store
+
+Commercial licenses are available in the following tiers:
+
+  - INDIE LICENSE: $499/year (individual developers)
+  - TEAM LICENSE: $2,999/year (up to 10 developers)
+  - STARTUP LICENSE: $9,999/year (unlimited team, revenue <$1M)
+  - ENTERPRISE LICENSE: Custom pricing (contact for quote)
+
+All commercial licenses include:
+  - Technical support
+  - Update access
+  - Deployment rights
+  - White label options (Enterprise tier)
+
+================================================================================
+10. SECURITY & CONFIDENTIALITY
+================================================================================
+
+10.1 CONFIDENTIAL INFORMATION
+The Software and all related materials are confidential and proprietary.
+Licensee agrees to:
+  - Maintain strict confidentiality
+  - Not disclose to third parties
+  - Use reasonable security measures to protect
+
+10.2 WATERMARK INTEGRITY
+All files contain digital watermarks and copyright notices. Tampering with,
+removing, or obscuring these watermarks is prohibited and subject to legal action.
+
+10.3 AUDIT RIGHTS
+The Owner reserves the right to audit Licensee's use of the Software to
+ensure compliance with this license.
+
+================================================================================
+11. ACCEPTANCE
+================================================================================
+
+By accessing, viewing, or using the Software, Licensee acknowledges that they
+have read, understood, and agree to be bound by the terms of this license.
+
+If Licensee does not agree to these terms, they must immediately cease all
+use of the Software and delete all copies in their possession.
+
+================================================================================
+12. ENTIRE AGREEMENT
+================================================================================
+
+This license constitutes the entire agreement between the parties and supersedes
+all prior or contemporaneous agreements, representations, or understandings.
+
+This license may only be modified by written agreement signed by the Owner.
+
+================================================================================
+
+END OF LICENSE
+
+For licensing inquiries: kiliaan@bakerstreet221b.store
+Repository: github.com/Bakery-street-project/primax-automation-secure (PRIVATE)
+
+WATERMARK: PRIMAX-AI-BSP-2025
+© 2025 Bakery Street Project - Kiliaan Vanvoorden - ALL RIGHTS RESERVED

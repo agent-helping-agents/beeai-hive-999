@@ -1,0 +1,293 @@
+# Energetic Lexicon Database - Security .gitignore
+# 🔒 PREVENTS ACCIDENTAL COMMIT OF SENSITIVE DATA
+
+# ============================================================================
+# ENCRYPTION KEYS & CREDENTIALS (CRITICAL - NEVER COMMIT)
+# ============================================================================
+
+# GPG keys
+*.gpg
+*.asc
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+
+# Vault passwords
+*vault_password*
+*_password
+.primax_vault_password
+.vault_key
+
+# Environment variables
+.env
+.env.*
+!.env.example
+*.secret
+secrets/
+credentials/
+
+# API keys & tokens
+*_api_key
+*_token
+*.keystore
+*.jks
+
+# Database credentials
+db_password*
+database_creds*
+
+# ============================================================================
+# DATABASE FILES (ENCRYPTED BACKUPS ONLY)
+# ============================================================================
+
+# SQLite databases (should be encrypted before commit)
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# PostgreSQL dumps (unencrypted)
+*.dump
+# Allow schema.sql (schema definition, not data)
+# *.sql - commented out to allow schema.sql
+
+# ChromaDB vector store (large binary files)
+chroma/
+chroma_db/
+*.chroma
+
+# Database backups (unencrypted)
+backups/
+*.backup
+*.bak
+
+# Encrypted backups are OK (but should be in separate secure storage)
+# encrypted_backups/ - commented out, allow encrypted backups
+
+# ============================================================================
+# LOGS & AUDIT TRAILS (MAY CONTAIN SENSITIVE DATA)
+# ============================================================================
+
+# Application logs
+logs/
+*.log
+audit_logs/
+*.audit
+
+# Debug outputs
+debug/
+*.debug
+
+# ============================================================================
+# PYTHON ENVIRONMENT
+# ============================================================================
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+# *.spec - Allow PyInstaller spec file (energetic_lexicon.spec)
+!energetic_lexicon.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ============================================================================
+# NODE.JS / JAVASCRIPT
+# ============================================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+
+# ============================================================================
+# EDITOR & IDE
+# ============================================================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw?
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# OPERATING SYSTEM
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Android (Termux)
+*.apk
+*.ap_
+*.dex
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+
+# General temp files
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+
+# PDFs (may contain sensitive research - only commit encrypted)
+*.pdf
+!docs/*.pdf  # Allow PDFs in docs folder if needed
+
+# Archives (should be encrypted first)
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ============================================================================
+# DATA DIRECTORIES (LARGE/SENSITIVE)
+# ============================================================================
+
+# Raw data (should be processed and encrypted)
+data/raw/
+data/sensitive/
+data/private/
+
+# Embeddings (large files - should be regenerated or stored separately)
+embeddings/
+*.pkl
+*.pickle
+*.npy
+*.npz
+
+# ============================================================================
+# CI/CD ARTIFACTS
+# ============================================================================
+
+# GitHub Actions
+.github/workflows/secrets.yml
+
+# Build artifacts
+dist/
+out/
+
+# ============================================================================
+# NOTION INTEGRATION
+# ============================================================================
+
+# Notion API tokens
+notion_token*
+.notion_*
+
+# ============================================================================
+# BACKUP & SYNC
+# ============================================================================
+
+# Restic backups
+restic_repo/
+*.restic
+
+# Rsync temp
+.rsync_tmp/
+
+# ============================================================================
+# ALLOWED FILES (EXPLICITLY WHITELIST IF NEEDED)
+# ============================================================================
+
+# These should be committed:
+# - README.md
+# - LICENSE.md
+# - .gitignore (this file)
+# - ENERGETIC_LEXICON_RESEARCH.md
+# - Source code (*.py, *.js, *.rs)
+# - Documentation (*.md in docs/)
+# - Schema definitions (*.sql, *.yml for schema only)
+# - .env.example (template only, no real values)
+# - encrypted_backups/ (GPG encrypted files only)
+
+# ============================================================================
+# END OF SECURITY .GITIGNORE
+# ============================================================================

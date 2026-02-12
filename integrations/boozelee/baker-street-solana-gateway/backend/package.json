@@ -1,0 +1,25 @@
+{
+  "name": "baker-street-solana-gateway",
+  "version": "1.0.0",
+  "description": "AI Proxy with Solana micro-payments",
+  "funding": "https://github.com/BoozeLee/baker-street-solana-gateway",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.91.0",
+    "axios": "^1.13.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "openai": "^4.28.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.24",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

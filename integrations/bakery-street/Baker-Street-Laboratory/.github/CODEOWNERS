@@ -1,0 +1,25 @@
+# Baker Street Laboratory - Code Owners
+# This file defines who is responsible for code review in different parts of the repository
+
+# Global ownership - all files require review from repository owner
+* @BoozeLee
+
+# Core system files require additional scrutiny
+/implementation/src/core/ @BoozeLee
+/implementation/src/database/ @BoozeLee
+/config/ @BoozeLee
+
+# GitHub workflows and CI/CD
+/.github/ @BoozeLee
+
+# Documentation can be reviewed by community maintainers
+/docs/ @BoozeLee
+README.md @BoozeLee
+CONTRIBUTING.md @BoozeLee
+
+# Research outputs can be reviewed by research team
+/research/ @BoozeLee
+
+# Database schema changes require careful review
+/implementation/src/database/init_db.py @BoozeLee
+requirements.txt @BoozeLee

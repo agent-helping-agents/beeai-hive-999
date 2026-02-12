@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  beeai-api:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    container_name: beeai-api
+    restart: unless-stopped
+    ports:
+      - "22181:22181"
+      - "22182:22182"
+    environment:
+      - T221B_SECRET_KEY=${T221B_SECRET_KEY:-change-me-in-production}
+      - ENV=${ENV:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - RATE_LIMIT=${RATE_LIMIT:-100}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - beeai-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:22181/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  redis:
+    image: redis:7-alpine
+    container_name: beeai-redis
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - beeai-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: beeai-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - beeai-api
+    networks:
+      - beeai-network
+
+volumes:
+  redis-data:
+
+networks:
+  beeai-network:
+    driver: bridge

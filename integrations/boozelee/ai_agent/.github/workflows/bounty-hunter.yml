@@ -1,0 +1,64 @@
+name: 🎯 Bounty Hunter Automation
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # Every 3 hours
+  workflow_dispatch:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  scan-bounties:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install langchain langchain-community langchain-core anthropic openai
+          pip install requests pyyaml python-dotenv
+
+      - name: Scan for bounties
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python bounty_hunter.py --mode scan --auto-comment
+
+      - name: Analyze complexity
+        if: github.event_name == 'issues'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python bounty_hunter.py --mode analyze --issue $ISSUE_NUMBER
+
+      - name: Generate solution proposal
+        if: github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'bounty')
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python bounty_hunter.py --mode propose --issue $ISSUE_NUMBER
+
+      - name: Submit daily report
+        if: github.event.schedule == '0 0 * * *'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/bounty_report.py --period daily

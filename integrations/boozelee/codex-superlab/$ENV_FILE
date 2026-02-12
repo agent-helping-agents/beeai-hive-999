@@ -1,0 +1,20 @@
+# Discord
+DISCORD_BOT_TOKEN=$(grep '^DISCORD_BOT_TOKEN=' "$VAULT/discord.env" | cut -d= -f2-)
+DISCORD_PROGRESS_CHANNEL_ID=$(grep '^DISCORD_PROGRESS_CHANNEL_ID=' "$VAULT/discord.env" | cut -d= -f2-)
+
+# Google Credentials
+GOOGLE_SHEETS_CREDENTIALS_PATH=$GOOGLE_PATH
+SHEETS_CREDENTIALS=$GOOGLE_PATH
+PROGRESS_TRACKER_SHEET_ID=$(grep '^PROGRESS_TRACKER_SHEET_ID=' "$VAULT/gmail.env" | cut -d= -f2-)
+GMAIL_CREDENTIALS_PATH=$GMAIL_PATH
+GMAIL_CREDENTIALS=$GMAIL_PATH
+TEAM_NOTIFICATION_EMAIL=$(grep '^TEAM_NOTIFICATION_EMAIL=' "$VAULT/gmail.env" | cut -d= -f2-)
+
+# OpenAI & GitHub
+OPENAI_API_KEY=$(grep '^OPENAI_API_KEY=' "$VAULT/openai.env" | cut -d= -f2-)
+GITHUB_TOKEN=$(grep '^GITHUB_TOKEN=' "$VAULT/github.env" | cut -d= -f2-)
+VAULT_PATH=$VAULT
+
+# Stripe & Gumroad
+STRIPE_SECRET_KEY=$(grep '^STRIPE_SECRET_KEY=' "$VAULT/stripe.env" | cut -d= -f2-)
+GUMROAD_API_TOKEN=$(grep '^GUMROAD_API_TOKEN=' "$VAULT/gumroad.env" | cut -d= -f2-)

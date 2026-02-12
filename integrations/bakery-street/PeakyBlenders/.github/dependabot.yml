@@ -1,0 +1,12 @@
+version: 2
+package-ecosystems
+  - package-qanager:
+      directory: /
+      schedule: weekly
+      open-pull-requests-limit: 10
+      reviewers:
+        - bakery-street-projct
+      assignees:
+        - bakery-street-projct
+version: 2
+major_versions: auto

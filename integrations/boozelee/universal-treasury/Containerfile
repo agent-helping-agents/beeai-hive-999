@@ -1,0 +1,42 @@
+# Universal Treasury CLI - Podman Containerfile
+# Build with: podman build -t universal-treasury-cli -f Containerfile .
+
+FROM alpine:latest
+
+# Install dependencies (including SQLite for database support)
+RUN apk add --no-cache \
+    ca-certificates \
+    sqlite
+
+# Set working directory
+WORKDIR /app
+
+# Copy binary (will be built during container build)
+COPY treasury /usr/local/bin/treasury
+
+# Make binary executable
+RUN chmod +x /usr/local/bin/treasury
+
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/treasury"]
+
+# Default command
+CMD ["--help"]
+
+# Metadata
+LABEL org.opencontainers.image.title="Universal Treasury CLI"
+LABEL org.opencontainers.image.description="Universal Financial Operations CLI with Wise integration"
+LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.source="https://github.com/universal-treasury/cli"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL maintainer="Universal Treasury <support@universal-treasury.com>"
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD /usr/local/bin/treasury --help || exit 1
+
+# Security: Run as non-root user
+RUN adduser -D -s /bin/sh appuser && \
+    chown -R appuser:appuser /app
+
+USER appuser

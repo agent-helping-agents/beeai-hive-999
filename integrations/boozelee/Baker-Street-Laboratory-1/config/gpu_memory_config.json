@@ -1,0 +1,14 @@
+{
+  "gpu_memory_limit_mb": 8192,
+  "safety_margin_mb": 1024,
+  "model_rotation_schedule": {
+    "morning": "baker-street-longcontext:latest",
+    "afternoon": "baker-street-vision:latest",
+    "evening": "baker-street-creative:latest"
+  },
+  "fallback_strategies": {
+    "longcontext_cpu": true,
+    "model_unloading": true,
+    "memory_monitoring": true
+  }
+}

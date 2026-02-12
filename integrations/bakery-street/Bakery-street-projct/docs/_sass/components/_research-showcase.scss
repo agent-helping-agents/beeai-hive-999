@@ -1,0 +1,77 @@
+// Research Showcase - Interactive Grid Layout
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.research-card {
+  background: var(--pure-white);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(191, 161, 129, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.research-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+}
+
+.research-card-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--pure-white);
+}
+
+.research-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  margin-bottom: 1rem;
+}
+
+.research-card-description {
+  color: var(--secondary-gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.research-card-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent-gold);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.research-card-link:hover {
+  color: var(--primary-navy);
+}
+
+.research-card-link::after {
+  content: '→';
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.research-card-link:hover::after {
+  transform: translateX(4px);
+}

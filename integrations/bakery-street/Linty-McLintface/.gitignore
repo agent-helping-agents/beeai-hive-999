@@ -1,0 +1,37 @@
+# Ignore build artifacts
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+
+# VS and JetBrains IDE settings
+.vs/
+.idea/
+*.DotSettings
+*.sln.docstates
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+project.lock.json
+
+# Python/Node (in case)
+__pycache__/
+node_modules/
+npm-debug.log*
+
+# OS/Editor
+*.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+
+# Sensitive files
+*.key
+*.pfx
+*.env
+secrets.json
+appsettings.json

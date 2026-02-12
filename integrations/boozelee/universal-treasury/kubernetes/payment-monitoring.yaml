@@ -1,0 +1,66 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: payment-api-monitor
+  labels:
+    app: payment-api
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: payment-api
+  endpoints:
+  - port: http
+    path: /api/v1/health
+    interval: 30s
+    scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+    - default
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-logger
+  labels:
+    app: payment-logger
+    tier: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-logger
+  template:
+    metadata:
+      labels:
+        app: payment-logger
+    spec:
+      containers:
+      - name: payment-logger
+        image: busybox:latest
+        command: ["/bin/sh", "-c", "tail -f /var/log/payment-api.log"]
+        volumeMounts:
+        - name: payment-logs
+          mountPath: /var/log
+      volumes:
+      - name: payment-logs
+        emptyDir: {}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-logging-config
+  labels:
+    app: payment-api
+    tier: monitoring
+data:
+  log-config.json: |
+    {
+      "log_level": "info",
+      "log_format": "json",
+      "log_file": "/var/log/payment-api.log",
+      "max_file_size": "100MB",
+      "max_backups": 5,
+      "compress": true,
+      "log_rotation": "daily"
+    }

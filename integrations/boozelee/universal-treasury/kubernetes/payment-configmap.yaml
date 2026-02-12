@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-config
+  labels:
+    app: payment-api
+    tier: backend
+data:
+  app.config: |
+    {
+      "log_level": "info",
+      "payment_timeout": 30,
+      "max_transaction_amount": 10000,
+      "supported_currencies": ["USD", "EUR", "GBP", "JPY", "CAD", "AUD"],
+      "webhook_secret": "your-webhook-secret-key-here"
+    }
+  nginx.config: |
+    server {
+      listen 80;
+      server_name payment-api.universal-treasury.com;
+      
+      location / {
+        proxy_pass http://payment-api-service:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+      }
+    }

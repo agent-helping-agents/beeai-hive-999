@@ -1,0 +1,57 @@
+# Bakery Street Project - Organization Dependencies
+# Core AI/ML and development tools for enterprise projects
+
+# AI/ML Framework Dependencies
+poly-ai-framework>=1.0.0
+tensorflow>=2.13.0
+pytorch>=2.0.0
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Web Development
+fastapi>=0.100.0
+uvicorn>=0.23.0
+streamlit>=1.25.0
+flask>=2.3.0
+django>=4.2.0
+react>=18.0.0
+nextjs>=13.0.0
+vue>=3.3.0
+
+# Database
+postgresql>=15.0
+redis>=7.0.0
+mongodb>=6.0.0
+sqlalchemy>=2.0.0
+
+# DevOps & Infrastructure
+docker>=24.0.0
+kubernetes>=1.28.0
+terraform>=1.5.0
+ansible>=6.0.0
+jenkins>=2.400.0
+
+# Security & Monitoring
+cryptography>=41.0.0
+requests>=2.31.0
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Documentation
+sphinx>=7.0.0
+mkdocs>=1.5.0
+pydoc>=3.11.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.11.0
+coverage>=7.3.0
+
+# Note: Install with: pip install -r requirements.txt

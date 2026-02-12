@@ -1,0 +1,25 @@
+// Color System - Professional Navy/Gold Palette
+:root {
+  // Primary Colors
+  --primary-navy: #1C2833;
+  --accent-gold: #BFA181;
+  --secondary-gray: #6E6E6E;
+  --background-light: #F8F9FA;
+  --text-dark: #2C3E50;
+  
+  // Utility Colors
+  --pure-white: #FFFFFF;
+  --success-green: #27AE60;
+  --warning-orange: #F39C12;
+  --error-red: #E74C3C;
+  
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, var(--primary-navy) 0%, #34495E 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-gold) 0%, #D4AF37 100%);
+  
+  // Shadows
+  --shadow-sm: 0 2px 4px rgba(28, 40, 51, 0.1);
+  --shadow-md: 0 4px 6px rgba(28, 40, 51, 0.15);
+  --shadow-lg: 0 10px 25px rgba(28, 40, 51, 0.2);
+  --shadow-xl: 0 20px 40px rgba(28, 40, 51, 0.25);
+}

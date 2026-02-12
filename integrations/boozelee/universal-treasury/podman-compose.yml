@@ -1,0 +1,70 @@
+# Universal Treasury CLI - Podman Compose Configuration
+# Run with: podman-compose up -d
+
+version: '3.8'
+
+services:
+  treasury-cli:
+    image: universal-treasury-cli:1.0.0
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: treasury-cli
+    restart: unless-stopped
+    volumes:
+      - ~/.treasury:/home/appuser/.treasury
+      - ./config:/app/config
+    environment:
+      - WISE_CLIENT_ID=${WISE_CLIENT_ID}
+      - WISE_REDIRECT_URI=${WISE_REDIRECT_URI}
+      - WISE_API_KEY=${WISE_API_KEY}
+    networks:
+      - treasury-net
+    healthcheck:
+      test: ["CMD", "treasury", "--help"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Database service (SQLite is file-based, but we can add a proper DB for scaling)
+  # treasury-db:
+  #   image: postgres:15-alpine
+  #   container_name: treasury-db
+  #   environment:
+  #     POSTGRES_USER: treasury
+  #     POSTGRES_PASSWORD: securepassword
+  #     POSTGRES_DB: treasury
+  #   volumes:
+  #     - treasury-db-data:/var/lib/postgresql/data
+  #   networks:
+  #     - treasury-net
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U treasury"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
+
+  # Webhook receiver service (for future enhancement)
+  # treasury-webhooks:
+  #   image: universal-treasury-webhooks:1.0.0
+  #   build:
+  #     context: .
+  #     dockerfile: webhooks/Containerfile
+  #   container_name: treasury-webhooks
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - PORT=3000
+  #     - WISE_WEBHOOK_SECRET=${WISE_WEBHOOK_SECRET}
+  #   networks:
+  #     - treasury-net
+  #   depends_on:
+  #     treasury-db:
+  #       condition: service_healthy
+
+networks:
+  treasury-net:
+    driver: bridge
+
+# volumes:
+#   treasury-db-data:

@@ -1,0 +1,141 @@
+# Baker Street Laboratory - Agent Configuration
+# This file defines the AI agents used in the research pipeline
+
+agents:
+  # Research Orchestrator - Coordinates the overall research workflow
+  research_orchestrator:
+    type: "orchestrator"
+    model: "gpt-4"
+    temperature: 0.3
+    max_tokens: 2000
+    role: "Research coordinator and workflow manager"
+    capabilities:
+      - "task_planning"
+      - "workflow_coordination"
+      - "progress_tracking"
+    
+  # Data Collection Agent - Gathers information from various sources
+  data_collector:
+    type: "collector"
+    model: "gpt-3.5-turbo"
+    temperature: 0.2
+    max_tokens: 1500
+    role: "Information gathering and data collection"
+    capabilities:
+      - "web_search"
+      - "document_retrieval"
+      - "api_integration"
+      - "data_validation"
+    tools:
+      - "search_engine"
+      - "document_parser"
+      - "api_client"
+    
+  # Analysis Agent - Performs data analysis and pattern recognition
+  analyzer:
+    type: "analyzer"
+    model: "gpt-4"
+    temperature: 0.1
+    max_tokens: 3000
+    role: "Data analysis and pattern recognition"
+    capabilities:
+      - "statistical_analysis"
+      - "pattern_recognition"
+      - "hypothesis_testing"
+      - "visualization"
+    tools:
+      - "pandas"
+      - "numpy"
+      - "matplotlib"
+      - "seaborn"
+    
+  # Synthesis Agent - Combines findings into coherent insights
+  synthesizer:
+    type: "synthesizer"
+    model: "gpt-4"
+    temperature: 0.4
+    max_tokens: 4000
+    role: "Knowledge synthesis and insight generation"
+    capabilities:
+      - "knowledge_integration"
+      - "insight_generation"
+      - "report_writing"
+      - "recommendation_formulation"
+    
+  # Code Generator - Creates implementation code based on research
+  code_generator:
+    type: "generator"
+    model: "gpt-4"
+    temperature: 0.2
+    max_tokens: 2500
+    role: "Code generation and implementation"
+    capabilities:
+      - "code_generation"
+      - "algorithm_implementation"
+      - "testing_framework"
+      - "documentation"
+    tools:
+      - "python"
+      - "jupyter"
+      - "pytest"
+
+# Global Configuration
+global_config:
+  # API Settings
+  api_settings:
+    openai_api_base: "https://api.openai.com/v1"
+    rate_limit: 60  # requests per minute
+    timeout: 30     # seconds
+    
+  # Research Pipeline Settings
+  pipeline_settings:
+    max_iterations: 5
+    convergence_threshold: 0.95
+    output_format: "markdown"
+    save_intermediate: true
+    
+  # Privacy and Security
+  privacy:
+    anonymize_data: true
+    encrypt_sensitive: true
+    audit_trail: true
+    
+  # Output Configuration
+  output:
+    research_dir: "research"
+    implementation_dir: "implementation"
+    optimization_dir: "optimization"
+    log_level: "INFO"
+    
+# Tool Integrations
+tools:
+  search_engines:
+    - name: "google"
+      api_key_env: "GOOGLE_API_KEY"
+      search_engine_id_env: "GOOGLE_SEARCH_ENGINE_ID"
+    - name: "bing"
+      api_key_env: "BING_API_KEY"
+      
+  databases:
+    - name: "vector_db"
+      type: "chroma"
+      persist_directory: "data/vector_store"
+    - name: "metadata_db"
+      type: "sqlite"
+      path: "data/metadata.db"
+      
+  external_apis:
+    - name: "arxiv"
+      base_url: "http://export.arxiv.org/api/query"
+    - name: "pubmed"
+      base_url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+
+# Drive Research Pipeline
+research_pipeline:
+  stages:
+    - data_collection:
+        target: "/media/batman/2e5c0fde-0328-49e4-8d37-dd18be027734/"
+        capabilities: ["file_traversal", "metadata_extraction"]
+    - analysis:
+        focus: "pattern_recognition"
+    - synthesis:

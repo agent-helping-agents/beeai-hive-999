@@ -1,0 +1,509 @@
+/* Baker Street Laboratory - Psychedelic Theme Styles */
+/* Advanced visual effects and theme variations for the psychedelic detective experience */
+
+/* Psychedelic Theme Variables */
+.psychedelic-theme {
+  --primary-color: #FF1493;
+  --secondary-color: #8A2BE2;
+  --accent-color: #00CED1;
+  --background-color: #0A0A0A;
+  --surface-color: #1A1A2E;
+  --text-color: #FFFFFF;
+  --text-secondary: #E0E0E0;
+}
+
+/* Laboratory Theme Variables */
+.laboratory-theme {
+  --primary-color: #0F4C75;
+  --secondary-color: #3282B8;
+  --accent-color: #BBE1FA;
+  --background-color: #FFFFFF;
+  --surface-color: #F8F9FA;
+  --text-color: #0F3460;
+  --text-secondary: #6C757D;
+}
+
+/* Detective Theme Variables (Default) */
+.detective-theme {
+  --primary-color: #2C1810;
+  --secondary-color: #8B4513;
+  --accent-color: #DAA520;
+  --background-color: #1A0F08;
+  --surface-color: #3A2818;
+  --text-color: #F5F5DC;
+  --text-secondary: #D3C7A8;
+}
+
+/* Psychedelic Visual Effects */
+.psychedelic-gradient {
+  background: linear-gradient(45deg, 
+    #FF1493, #00CED1, #FFD700, #32CD32, 
+    #FF4500, #8A2BE2, #FF1493);
+  background-size: 400% 400%;
+  animation: psychedelic-flow 8s ease-in-out infinite;
+}
+
+.kaleidoscope-background {
+  background: conic-gradient(from 0deg, 
+    #FF1493 0deg, #00CED1 60deg, #FFD700 120deg, 
+    #32CD32 180deg, #FF4500 240deg, #8A2BE2 300deg, #FF1493 360deg);
+  animation: kaleidoscope-spin 20s linear infinite;
+}
+
+.fractal-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, #FF1493 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, #00CED1 2px, transparent 2px),
+    radial-gradient(circle at 25% 75%, #FFD700 1px, transparent 1px),
+    radial-gradient(circle at 75% 25%, #8A2BE2 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+  background-position: 0 0, 25px 25px, 0 0, 12.5px 12.5px;
+  animation: fractal-drift 15s linear infinite;
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: neon-flicker 2s ease-in-out infinite alternate;
+}
+
+.neon-border {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, 
+    #FF1493, #00CED1, #FFD700, #FF1493) 1;
+  box-shadow: 
+    inset 0 0 10px rgba(255, 20, 147, 0.3),
+    0 0 10px rgba(255, 20, 147, 0.3);
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+/* Morphing Elements */
+.morphing-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: morph-shape 8s ease-in-out infinite;
+}
+
+.liquid-button {
+  background: linear-gradient(45deg, #FF1493, #8A2BE2);
+  border: none;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.liquid-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.liquid-button:hover::before {
+  left: 100%;
+}
+
+/* Particle System Enhancements */
+.particle-field {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle-field::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #FF1493, transparent),
+    radial-gradient(2px 2px at 40px 70px, #00CED1, transparent),
+    radial-gradient(1px 1px at 90px 40px, #FFD700, transparent),
+    radial-gradient(1px 1px at 130px 80px, #32CD32, transparent),
+    radial-gradient(2px 2px at 160px 30px, #FF4500, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: particle-float 20s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Holographic Effects */
+.holographic {
+  background: linear-gradient(45deg, 
+    transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: holographic-shift 3s ease-in-out infinite;
+  position: relative;
+}
+
+.holographic::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255, 0, 150, 0.1) 0%, 
+    rgba(0, 255, 255, 0.1) 50%, 
+    rgba(255, 255, 0, 0.1) 100%);
+  mix-blend-mode: overlay;
+  animation: holographic-wave 2s ease-in-out infinite;
+}
+
+/* Glitch Effects */
+.glitch-text {
+  position: relative;
+  color: #FFFFFF;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitch-1 0.5s infinite;
+  color: #FF1493;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitch-2 0.5s infinite;
+  color: #00CED1;
+  z-index: -2;
+}
+
+/* Cosmic Background Effects */
+.cosmic-background {
+  background: 
+    radial-gradient(ellipse at top, #1B2735 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, #090A0F 0%, transparent 50%),
+    radial-gradient(ellipse at center, #3D4E81 0%, transparent 50%);
+  position: relative;
+}
+
+.cosmic-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #FFFFFF, transparent),
+    radial-gradient(2px 2px at 40px 70px, #FFFFFF, transparent),
+    radial-gradient(1px 1px at 90px 40px, #FFFFFF, transparent),
+    radial-gradient(1px 1px at 130px 80px, #FFFFFF, transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: cosmic-drift 50s linear infinite;
+  opacity: 0.3;
+}
+
+/* Mirror and Reflection Effects */
+.mirror-effect {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.mirror-effect::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  transform: scaleY(-1);
+  opacity: 0.3;
+  mask: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
+}
+
+/* Labyrinthine Victorian Motifs */
+.victorian-ornament {
+  position: relative;
+}
+
+.victorian-ornament::before {
+  content: '❦ ❧ ❦ ❧ ❦';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  opacity: 0.6;
+  letter-spacing: 10px;
+}
+
+.victorian-border {
+  border: 3px solid;
+  border-image: repeating-linear-gradient(45deg,
+    var(--accent-color) 0px,
+    var(--accent-color) 10px,
+    transparent 10px,
+    transparent 20px) 1;
+  position: relative;
+}
+
+.victorian-border::before,
+.victorian-border::after {
+  content: '◆';
+  position: absolute;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+}
+
+.victorian-border::before {
+  top: -8px;
+  left: -8px;
+}
+
+.victorian-border::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+/* Conspiracy Sigils */
+.conspiracy-sigil {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+}
+
+.conspiracy-sigil::before {
+  content: '⚬';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--accent-color);
+  animation: sigil-rotate 10s linear infinite;
+}
+
+.conspiracy-sigil::after {
+  content: '◊';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: var(--primary-color);
+  animation: sigil-rotate 5s linear infinite reverse;
+}
+
+/* Butterfly Wing Effects */
+.butterfly-wings {
+  position: relative;
+  display: inline-block;
+}
+
+.butterfly-wings::before,
+.butterfly-wings::after {
+  content: '🦋';
+  position: absolute;
+  font-size: 1.5rem;
+  animation: butterfly-flutter 3s ease-in-out infinite;
+}
+
+.butterfly-wings::before {
+  top: -20px;
+  left: -30px;
+  animation-delay: 0s;
+}
+
+.butterfly-wings::after {
+  bottom: -20px;
+  right: -30px;
+  animation-delay: 1.5s;
+}
+
+/* Swirling Neon Effects */
+.swirling-neon {
+  background: conic-gradient(from 0deg,
+    #FF1493, #00CED1, #FFD700, #32CD32,
+    #FF4500, #8A2BE2, #FF1493);
+  border-radius: 50%;
+  animation: swirl-neon 4s linear infinite;
+  position: relative;
+}
+
+.swirling-neon::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: var(--background-color);
+  border-radius: 50%;
+}
+
+/* Animation Keyframes */
+@keyframes psychedelic-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes kaleidoscope-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fractal-drift {
+  0% { background-position: 0 0, 25px 25px, 0 0, 12.5px 12.5px; }
+  100% { background-position: 50px 50px, 75px 75px, 25px 25px, 37.5px 37.5px; }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: inset 0 0 10px rgba(255, 20, 147, 0.3), 0 0 10px rgba(255, 20, 147, 0.3); }
+  50% { box-shadow: inset 0 0 20px rgba(255, 20, 147, 0.6), 0 0 20px rgba(255, 20, 147, 0.6); }
+}
+
+@keyframes morph-shape {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+  50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+  75% { border-radius: 30% 70% 30% 70% / 70% 30% 70% 30%; }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-10px) translateX(10px); }
+  66% { transform: translateY(5px) translateX(-5px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes holographic-shift {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+@keyframes holographic-wave {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+@keyframes cosmic-drift {
+  0% { transform: translateX(0px) translateY(0px); }
+  100% { transform: translateX(-200px) translateY(-200px); }
+}
+
+@keyframes sigil-rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes butterfly-flutter {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  25% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  50% { transform: scale(0.9) rotate(-5deg); opacity: 0.8; }
+  75% { transform: scale(1.05) rotate(3deg); opacity: 0.9; }
+}
+
+@keyframes swirl-neon {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Theme-specific Customizations */
+.psychedelic-theme .app-header {
+  background: linear-gradient(135deg, #FF1493, #8A2BE2, #00CED1);
+}
+
+.psychedelic-theme .sidebar {
+  background: linear-gradient(180deg, rgba(255, 20, 147, 0.1), rgba(138, 43, 226, 0.1));
+}
+
+.psychedelic-theme .nav-item.active {
+  background: linear-gradient(135deg, rgba(255, 20, 147, 0.3), rgba(0, 206, 209, 0.2));
+  box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
+}
+
+.laboratory-theme .app-header {
+  background: linear-gradient(135deg, #0F4C75, #3282B8);
+}
+
+.laboratory-theme .sidebar {
+  background: linear-gradient(180deg, rgba(15, 76, 117, 0.1), rgba(50, 130, 184, 0.1));
+}
+
+/* Responsive Psychedelic Effects */
+@media (max-width: 768px) {
+  .psychedelic-gradient {
+    animation-duration: 12s;
+  }
+  
+  .kaleidoscope-background {
+    animation-duration: 30s;
+  }
+  
+  .neon-glow {
+    text-shadow: 
+      0 0 3px currentColor,
+      0 0 6px currentColor,
+      0 0 9px currentColor;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .psychedelic-gradient,
+  .kaleidoscope-background,
+  .fractal-pattern,
+  .neon-flicker,
+  .neon-pulse,
+  .morph-shape,
+  .particle-float,
+  .holographic-shift,
+  .holographic-wave,
+  .glitch-1,
+  .glitch-2,
+  .cosmic-drift,
+  .sigil-rotate,
+  .butterfly-flutter,
+  .swirl-neon {
+    animation: none;
+  }
+}

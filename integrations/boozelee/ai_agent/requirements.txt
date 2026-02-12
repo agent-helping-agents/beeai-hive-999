@@ -1,0 +1,36 @@
+# AI Agent Automation System - Python Dependencies
+
+# LangChain Core
+langchain>=1.2.9
+langchain-community>=0.4.1
+langchain-core>=1.2.9
+langchain-text-splitters>=1.1.0
+
+# Vector Stores & Embeddings
+faiss-cpu>=1.13.0
+sentence-transformers>=5.2.0
+
+# ML/AI Backends
+torch>=2.10.0
+transformers>=5.1.0
+huggingface-hub>=1.4.0
+
+# LLM APIs
+anthropic>=0.79.0
+openai>=2.17.0
+
+# Data Processing
+numpy>=2.4.0
+scipy>=1.17.0
+scikit-learn>=1.8.0
+
+# Utilities
+pydantic>=2.12.0
+pyyaml>=6.0.3
+python-dotenv>=1.2.0
+requests>=2.32.5
+tqdm>=4.67.0
+
+# GitHub Integration
+# Note: gh CLI must be installed separately
+# pip install camel-ai  # Optional for Gemini support

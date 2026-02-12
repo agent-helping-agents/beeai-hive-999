@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-api-service
+  labels:
+    app: payment-api
+    tier: backend
+spec:
+  type: LoadBalancer
+  selector:
+    app: payment-api
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  - name: https
+    port: 443
+    targetPort: 8080
+    protocol: TCP

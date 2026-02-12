@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baker Street Laboratory</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/psychedelic.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="detective-theme">
+    <!-- Psychedelic Background Canvas -->
+    <canvas id="psychedelic-canvas" class="background-canvas"></canvas>
+    
+    <!-- Particle System -->
+    <div id="particles-js" class="particles-container"></div>
+    
+    <!-- Main Application Container -->
+    <div id="app" class="app-container">
+        <!-- Header/Navigation -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <!-- Custom Psychedelic Detective Artwork -->
+                    <div class="custom-logo">
+                        <img src="assets/images/ui/main_logo.png" alt="Baker Street Laboratory" class="main-logo-image">
+                        <div class="logo-text">
+                            <h1 class="app-title">Baker Street Laboratory</h1>
+                            <p class="app-subtitle">Kaleidoscopic Research Dreamscape</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-controls">
+                    <button id="theme-toggle" class="control-btn" title="Toggle Theme">
+                        <i class="fas fa-palette"></i>
+                    </button>
+                    <button id="settings-btn" class="control-btn" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div id="api-status" class="api-status">
+                        <i class="fas fa-circle status-indicator"></i>
+                        <span class="status-text">Connecting...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-view="research">
+                        <i class="fas fa-search"></i>
+                        <span>Research</span>
+                    </button>
+                    <button class="nav-item" data-view="reports">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </button>
+                    <button class="nav-item" data-view="data-sources">
+                        <i class="fas fa-database"></i>
+                        <span>Data Sources</span>
+                    </button>
+                    <button class="nav-item" data-view="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </button>
+                    <button class="nav-item" data-view="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                </nav>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <button class="quick-action-btn" id="new-research-btn">
+                        <i class="fas fa-plus"></i>
+                        New Research
+                    </button>
+                    <button class="quick-action-btn" id="recent-reports-btn">
+                        <i class="fas fa-history"></i>
+                        Recent Reports
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Content Views -->
+            <section class="content-area">
+                <!-- Research View -->
+                <div id="research-view" class="view active">
+                    <div class="view-header">
+                        <h2>Conduct Research</h2>
+                        <p>Enter your research query to traverse the kaleidoscopic dreamscape of knowledge</p>
+                    </div>
+                    
+                    <div class="research-form">
+                        <div class="input-group">
+                            <label for="research-query">Research Query</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="research-query" 
+                                       placeholder="What mysteries shall we unravel today?" 
+                                       class="psychedelic-input">
+                                <button id="conduct-research-btn" class="primary-btn">
+                                    <i class="fas fa-search"></i>
+                                    Investigate
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="research-options">
+                            <div class="option-group">
+                                <label>Data Sources</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="data-source" value="wikipedia" checked>
+                                        <span class="checkmark"></span>
+                                        Wikipedia
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="data-source" value="arxiv" checked>
+                                        <span class="checkmark"></span>
+                                        ArXiv
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="data-source" value="news" checked>
+                                        <span class="checkmark"></span>
+                                        News
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="max-results">Max Results per Source</label>
+                                <select id="max-results" class="psychedelic-select">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Research Progress -->
+                    <div id="research-progress" class="research-progress hidden">
+                        <div class="progress-header">
+                            <h3>Research in Progress</h3>
+                            <div class="progress-spinner">
+                                <div class="spinner psychedelic-spinner"></div>
+                            </div>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="step" data-step="query-analysis">
+                                <i class="fas fa-brain"></i>
+                                <span>Analyzing Query</span>
+                            </div>
+                            <div class="step" data-step="data-collection">
+                                <i class="fas fa-download"></i>
+                                <span>Collecting Data</span>
+                            </div>
+                            <div class="step" data-step="analysis">
+                                <i class="fas fa-microscope"></i>
+                                <span>Analyzing Results</span>
+                            </div>
+                            <div class="step" data-step="report-generation">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Generating Report</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Research Results -->
+                    <div id="research-results" class="research-results hidden">
+                        <div class="results-header">
+                            <h3>Research Complete</h3>
+                            <div class="results-meta">
+                                <span class="session-id"></span>
+                                <span class="completion-time"></span>
+                            </div>
+                        </div>
+                        <div class="results-content">
+                            <div class="result-summary"></div>
+                            <div class="result-actions">
+                                <button class="secondary-btn" id="view-full-report-btn">
+                                    <i class="fas fa-eye"></i>
+                                    View Full Report
+                                </button>
+                                <button class="secondary-btn" id="export-report-btn">
+                                    <i class="fas fa-download"></i>
+                                    Export Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports View -->
+                <div id="reports-view" class="view">
+                    <div class="view-header">
+                        <h2>Research Reports</h2>
+                        <p>Browse your collection of research investigations</p>
+                    </div>
+                    
+                    <div class="reports-container">
+                        <div class="reports-filters">
+                            <input type="text" id="reports-search" placeholder="Search reports..." class="psychedelic-input">
+                            <select id="reports-sort" class="psychedelic-select">
+                                <option value="date-desc">Newest First</option>
+                                <option value="date-asc">Oldest First</option>
+                                <option value="name-asc">Name A-Z</option>
+                                <option value="name-desc">Name Z-A</option>
+                            </select>
+                        </div>
+                        
+                        <div id="reports-list" class="reports-list">
+                            <!-- Reports will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Sources View -->
+                <div id="data-sources-view" class="view">
+                    <div class="view-header">
+                        <h2>Data Sources</h2>
+                        <p>Monitor and test external data source connections</p>
+                    </div>
+                    
+                    <div class="data-sources-grid">
+                        <div class="data-source-card" data-source="wikipedia">
+                            <div class="source-header">
+                                <i class="fab fa-wikipedia-w"></i>
+                                <h3>Wikipedia</h3>
+                                <div class="status-indicator" id="wikipedia-status">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                            </div>
+                            <p>Comprehensive encyclopedia articles</p>
+                            <button class="test-btn" data-source="wikipedia">Test Connection</button>
+                        </div>
+                        
+                        <div class="data-source-card" data-source="arxiv">
+                            <div class="source-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h3>ArXiv</h3>
+                                <div class="status-indicator" id="arxiv-status">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                            </div>
+                            <p>Academic papers and preprints</p>
+                            <button class="test-btn" data-source="arxiv">Test Connection</button>
+                        </div>
+                        
+                        <div class="data-source-card" data-source="news">
+                            <div class="source-header">
+                                <i class="fas fa-newspaper"></i>
+                                <h3>News API</h3>
+                                <div class="status-indicator" id="news-status">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                            </div>
+                            <p>Current news and articles</p>
+                            <button class="test-btn" data-source="news">Test Connection</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics View -->
+                <div id="analytics-view" class="view">
+                    <div class="view-header">
+                        <h2>Research Analytics</h2>
+                        <p>Insights into your research patterns and discoveries</p>
+                    </div>
+                    
+                    <div class="analytics-dashboard">
+                        <div class="analytics-cards">
+                            <div class="analytics-card">
+                                <h3>Total Research Sessions</h3>
+                                <div class="metric-value" id="total-sessions">-</div>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>Reports Generated</h3>
+                                <div class="metric-value" id="total-reports">-</div>
+                            </div>
+                            <div class="analytics-card">
+                                <h3>Data Sources Used</h3>
+                                <div class="metric-value" id="sources-used">-</div>
+                            </div>
+                        </div>
+                        
+                        <div class="charts-container">
+                            <div class="chart-placeholder">
+                                <p>Analytics charts will be implemented here</p>
+                                <p>Showing research trends, topic analysis, and source utilization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings View -->
+                <div id="settings-view" class="view">
+                    <div class="view-header">
+                        <h2>Settings</h2>
+                        <p>Configure your psychedelic research environment</p>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-section">
+                            <h3>Visual Effects</h3>
+                            <div class="setting-item">
+                                <label for="theme-select">Theme</label>
+                                <select id="theme-select" class="psychedelic-select">
+                                    <option value="detective">Detective</option>
+                                    <option value="laboratory">Laboratory</option>
+                                    <option value="psychedelic">Psychedelic</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label for="animations-toggle">Enable Animations</label>
+                                <input type="checkbox" id="animations-toggle" checked>
+                            </div>
+                            <div class="setting-item">
+                                <label for="particle-intensity">Particle Effects</label>
+                                <select id="particle-intensity" class="psychedelic-select">
+                                    <option value="none">None</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>API Configuration</h3>
+                            <div class="setting-item">
+                                <label for="api-url">API Base URL</label>
+                                <input type="text" id="api-url" value="http://localhost:5000/api/v2" class="psychedelic-input">
+                            </div>
+                            <div class="setting-item">
+                                <button id="test-api-btn" class="secondary-btn">Test API Connection</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Local AI (Ollama)</h3>
+                            <div class="setting-item">
+                                <label for="ollama-model">Preferred AI Model</label>
+                                <select id="ollama-model" class="psychedelic-select">
+                                    <option value="llama3.2:latest">Llama 3.2 (Latest)</option>
+                                    <option value="llama3.1:8b">Llama 3.1 8B</option>
+                                    <option value="mistral:latest">Mistral (Latest)</option>
+                                    <option value="codellama:latest">Code Llama</option>
+                                    <option value="phi3:latest">Phi-3</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label for="ai-temperature">AI Creativity</label>
+                                <input type="range" id="ai-temperature" min="0" max="1" step="0.1" value="0.7" class="psychedelic-slider">
+                                <span id="temperature-value">0.7</span>
+                            </div>
+                            <div class="setting-item">
+                                <button id="test-ollama-btn" class="secondary-btn">Test Ollama Connection</button>
+                                <button id="refresh-models-btn" class="secondary-btn">Refresh Models</button>
+                            </div>
+                            <div class="setting-item">
+                                <div id="ollama-status" class="status-display">
+                                    <span class="status-text">Checking Ollama status...</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>Research Preferences</h3>
+                            <div class="setting-item">
+                                <label for="default-output-dir">Default Output Directory</label>
+                                <input type="text" id="default-output-dir" value="research/desktop_output" class="psychedelic-input">
+                            </div>
+                            <div class="setting-item">
+                                <label for="auto-save-reports">Auto-save Reports</label>
+                                <input type="checkbox" id="auto-save-reports" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Report Viewer -->
+    <div id="report-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Research Report</h3>
+                <button class="modal-close" id="close-report-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="report-content" class="report-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="scripts/psychedelic-effects.js"></script>
+    <script src="scripts/api-client.js"></script>
+    <script src="scripts/ui-manager.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

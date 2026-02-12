@@ -1,0 +1,61 @@
+name: 🧠 LangChain RAG Pipeline
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'docs/**'
+      - 'data/**'
+      - 'langchain_rag.py'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # 2 AM daily
+
+jobs:
+  update-rag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install langchain langchain-community langchain-core
+          pip install faiss-cpu sentence-transformers torch
+          pip install anthropic openai
+
+      - name: Update FAISS index
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python langchain_rag.py --mode update-index
+
+      - name: Test RAG queries
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scripts/test_rag.py --queries configs/test_queries.yaml
+
+      - name: Cache embeddings
+        uses: actions/cache@v4
+        with:
+          path: data/embeddings
+          key: embeddings-${{ hashFiles('docs/**') }}
+          restore-keys: embeddings-
+
+      - name: Commit updated index
+        run: |
+          git config user.name "RAG Bot"
+          git config user.email "rag@ai-agent.local"
+          git add data/faiss_index/
+          git commit -m "chore: update FAISS index [auto]" || echo "No changes"
+          # Uncomment to auto-push:
+          # git push

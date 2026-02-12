@@ -1,0 +1,48 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.9.3
+
+# NOTE: If you generated this yaml from an unprivileged and rootless podman container on an SELinux
+# enabled system, check the podman generate kube man page for steps to follow to ensure that your pod/container
+# has the right permissions to access the volumes added.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    bind-mount-options: /home/boozelee/.local/share/podman-ai-lab/models/marco-o1:Z
+  creationTimestamp: "2026-02-12T13:18:57Z"
+  labels:
+    app: marco01-brain-engine-pod
+  name: marco01-brain-engine-pod
+spec:
+  containers:
+  - args:
+    - -m
+    - /models/marco-o1-q4_k_m.gguf
+    - --ctx-size
+    - "4096"
+    - --threads
+    - "12"
+    - --host
+    - 0.0.0.0
+    - --port
+    - "8080"
+    - --n-gpu-layers
+    - "999"
+    - --api-openai
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda
+    name: marco01-brain-engine
+    ports:
+    - containerPort: 8080
+      hostPort: 56625
+    volumeMounts:
+    - mountPath: /models
+      name: home-boozelee-.local-share-podman-ai-lab-models-marco-o1-host-0
+  volumes:
+  - hostPath:
+      path: /home/boozelee/.local/share/podman-ai-lab/models/marco-o1
+      type: Directory
+    name: home-boozelee-.local-share-podman-ai-lab-models-marco-o1-host-0
+

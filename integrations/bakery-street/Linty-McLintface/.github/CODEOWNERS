@@ -1,0 +1,9 @@
+# Code Owners  
+  
+# Global owners  
+* @yourusername  
+  
+# Project specific owners  
+/ConsoleApp1saf/ @yourusername  
+/ConsoleApp1saf.Sample/ @yourusername  
+/ConsoleApp1saf.Tests/ @yourusername 

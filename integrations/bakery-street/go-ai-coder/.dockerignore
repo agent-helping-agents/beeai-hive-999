@@ -1,0 +1,182 @@
+# CloudyMcCodeFace - Docker Security & Privacy Protection
+# This file ensures no sensitive data is included in Docker images
+
+# Security: Exclude sensitive configuration files
+.env
+.env.*
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+keys/
+certs/
+
+# Security: Exclude development and build artifacts
+.git/
+.gitignore
+.gitattributes
+.github/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Security: Exclude temporary and cache files
+tmp/
+temp/
+cache/
+*.tmp
+*.temp
+*.log
+*.pid
+*.lock
+node_modules/
+.npm/
+.yarn/
+
+# Security: Exclude sensitive data directories
+ai_learning/
+conversations/
+sessions/
+user_data/
+personal_data/
+private/
+confidential/
+
+# Security: Exclude development tools and scripts
+Makefile
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+scripts/
+tools/
+dev-tools/
+
+# Security: Exclude documentation that might contain sensitive info
+docs/
+*.md
+README*
+CHANGELOG*
+LICENSE*
+CONTRIBUTING*
+SECURITY*
+
+# Security: Exclude test files and coverage reports
+*_test.go
+test/
+tests/
+coverage/
+coverage.out
+coverage.html
+*.test
+*.prof
+
+# Security: Exclude build artifacts
+build/
+dist/
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Security: Exclude version control
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+
+# Security: Exclude CI/CD files
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+Jenkinsfile
+azure-pipelines.yml
+
+# Security: Exclude package managers
+go.sum
+package-lock.json
+yarn.lock
+Pipfile.lock
+requirements.txt
+poetry.lock
+
+# Security: Exclude OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Security: Exclude editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-*
+
+# Security: Exclude backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+
+# Security: Exclude large files that shouldn't be in containers
+*.iso
+*.dmg
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Security: Exclude monitoring and logging
+logs/
+*.log
+monitoring/
+metrics/
+prometheus/
+grafana/
+
+# Security: Exclude database files
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+
+# Security: Exclude cloud provider configs
+.aws/
+.gcp/
+.azure/
+cloud-config/
+terraform/
+ansible/
+
+# Security: Exclude local development files
+local/
+dev/
+development/
+sandbox/
+playground/
+
+# Security: Exclude any files with sensitive patterns
+*secret*
+*password*
+*token*
+*key*
+*credential*
+*private*
+*confidential*
+*sensitive*

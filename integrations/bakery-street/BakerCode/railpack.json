@@ -1,0 +1,6 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "deploy": {
+    "startCommand": "gunicorn --chdir codex-superlab-recreation web_dashboard:app --bind 0.0.0.0:$PORT --workers 2"
+  }
+}

@@ -1,0 +1,19 @@
+[Unit]
+Description=BeeAI Hive 999 — Multi-Agent Blockchain Analysis System
+After=network.target ollama.service
+Wants=ollama.service
+
+[Service]
+Type=simple
+User=boozelee
+WorkingDirectory=/home/boozelee/beeai-hive-999
+ExecStart=/home/boozelee/beeai-hive-999/.venv/bin/python main.py --non-interactive
+Restart=on-failure
+RestartSec=10
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

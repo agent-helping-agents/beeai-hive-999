@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  poly-ai-framework:
+    build: .
+    container_name: poly-ai-framework
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GITHUB_ORG=${GITHUB_ORG}
+      - GITHUB_USER=${GITHUB_USER}
+    volumes:
+      - ./config:/app/config
+      - ./logs:/app/logs
+      - ./examples:/app/examples
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import poly_framework; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  redis:
+    image: redis:7-alpine
+    container_name: poly-ai-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: poly-ai-postgres
+    environment:
+      - POSTGRES_DB=poly_ai
+      - POSTGRES_USER=poly_ai
+      - POSTGRES_PASSWORD=poly_ai_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U poly_ai"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis_data:
+  postgres_data:

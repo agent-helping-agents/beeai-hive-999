@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-api
+  labels:
+    app: payment-api
+    tier: backend
+    component: payment-processing
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment-api
+  template:
+    metadata:
+      labels:
+        app: payment-api
+    spec:
+      containers:
+      - name: payment-api
+        image: universal-treasury-payment-api:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: WISE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: payment-secrets
+              key: wise-api-key
+        - name: WISE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: payment-secrets
+              key: wise-client-id
+        - name: WISE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: payment-secrets
+              key: wise-client-secret
+        - name: ENVIRONMENT
+          value: "production"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        livenessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/v1/health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5

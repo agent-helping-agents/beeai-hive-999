@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: beeai-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m src.api.secure_server_fixed
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: T221B_SECRET_KEY
+        generateValue: true
+      - key: ENV
+        value: production
+      - key: PORT
+        value: 22181
+    healthCheckPath: /health
+    autoDeploy: true
+
+  - type: worker
+    name: beeai-agents
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m src.hive.agent_worker
+    envVars:
+      - key: API_URL
+        fromService:
+          name: beeai-api
+          type: web
+          property: hostport

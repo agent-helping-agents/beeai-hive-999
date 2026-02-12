@@ -1,0 +1,54 @@
+# CODEOWNERS - PRIMAX Automation Construction
+# WATERMARK: PRIMAX-AI-BSP-2025
+# © 2025 Bakery Street Project
+
+# =============================================================================
+# CODE OWNERSHIP AND REVIEW REQUIREMENTS
+# =============================================================================
+
+# Default owner for everything in the repository
+* @BoozeLee
+
+# Critical security files require owner approval
+/LICENSE @BoozeLee
+/SECURITY.md @BoozeLee
+/CODEOWNERS @BoozeLee
+/.gitignore @BoozeLee
+
+# Automation scripts require owner review
+/automation/ @BoozeLee
+*.sh @BoozeLee
+*.py @BoozeLee
+
+# CI/CD workflows require owner approval
+/.github/workflows/ @BoozeLee
+
+# Configuration files require owner approval
+*.env.example @BoozeLee
+*.yml @BoozeLee
+*.yaml @BoozeLee
+
+# Documentation requires owner review
+*.md @BoozeLee
+/docs/ @BoozeLee
+
+# =============================================================================
+# AUTHORIZED REVIEWERS
+# =============================================================================
+
+# Primary Owner: Kiliaan Vanvoorden (@BoozeLee)
+# Contact: kiliaan@bakerstreet221b.store
+
+# =============================================================================
+# REVIEW REQUIREMENTS
+# =============================================================================
+
+# - All changes require approval from @BoozeLee
+# - Security-sensitive changes require documented justification
+# - No force pushes to main branch
+# - All commits must be signed
+
+# =============================================================================
+
+# WATERMARK: PRIMAX-AI-BSP-2025
+# © 2025 Bakery Street Project - All Rights Reserved

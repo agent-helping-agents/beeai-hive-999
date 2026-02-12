@@ -1,0 +1,9 @@
+# requirements.txt for Aleph Cloud Staking Agent
+aleph-sdk-python==0.10.1 # Or latest stable version
+aiohttp
+pydantic
+pyyaml
+cryptography
+requests
+# Specific to Solana integration
+solders # Assuming this is used by SolanaIntegration for actual calls

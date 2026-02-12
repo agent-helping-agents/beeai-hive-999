@@ -1,0 +1,19 @@
+{
+  "name": "codex-superlab",
+  "version": "1.0.0",
+  "description": "- All scripts for Discord + Gmail onboarding and support live in `~/codex-superlab/discord-bot-automation/`. - Store `.env` with your tokens/passwords in that subfolder. - Use direnv for automatic environment loading.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^7.0.11",
+    "stripe": "^19.1.0"
+  }
+}

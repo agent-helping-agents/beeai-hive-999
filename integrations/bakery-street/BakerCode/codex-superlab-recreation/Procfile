@@ -1,0 +1,2 @@
+web: gunicorn web_dashboard:app
+bot: python discord_bot.py

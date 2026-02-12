@@ -1,0 +1,136 @@
+{
+  "items": [
+    {
+      "id": "check-1",
+      "name": "System Configuration",
+      "items": [
+        {
+          "id": "sys-1",
+          "text": "Check internet connectivity",
+          "completed": false
+        },
+        {
+          "id": "sys-2",
+          "text": "Verify API key availability",
+          "completed": false
+        },
+        {
+          "id": "sys-3",
+          "text": "Check tool versions",
+          "completed": false
+        },
+        {
+          "id": "sys-4",
+          "text": "Validate database connections",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "check-2",
+      "name": "Bounty Platforms",
+      "items": [
+        {
+          "id": "plat-1",
+          "text": "Check Upwork API status",
+          "completed": false
+        },
+        {
+          "id": "plat-2",
+          "text": "Verify Immunefi scanner configuration",
+          "completed": false
+        },
+        {
+          "id": "plat-3",
+          "text": "Check Algorand SDK installation",
+          "completed": false
+        },
+        {
+          "id": "plat-4",
+          "text": "Verify Stellar SDK installation",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "check-3",
+      "name": "Security Scanners",
+      "items": [
+        {
+          "id": "scan-1",
+          "text": "Verify Slither installation",
+          "completed": false
+        },
+        {
+          "id": "scan-2",
+          "text": "Check Mythril configuration",
+          "completed": false
+        },
+        {
+          "id": "scan-3",
+          "text": "Test Echidna installation",
+          "completed": false
+        },
+        {
+          "id": "scan-4",
+          "text": "Validate scanner output formats",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "check-4",
+      "name": "Documentation",
+      "items": [
+        {
+          "id": "docs-1",
+          "text": "Update TODAY_BOUNTY_REPORT.md",
+          "completed": false
+        },
+        {
+          "id": "docs-2",
+          "text": "Check REAL_BOUNTY_ANALYSIS.md",
+          "completed": false
+        },
+        {
+          "id": "docs-3",
+          "text": "Verify BOUNTY_HUNTER_SETUP.md",
+          "completed": false
+        },
+        {
+          "id": "docs-4",
+          "text": "Update NO_INVESTMENT_JOBS.md",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "check-5",
+      "name": "Daily Routine",
+      "items": [
+        {
+          "id": "daily-1",
+          "text": "Run check-bounty-status.sh",
+          "completed": false
+        },
+        {
+          "id": "daily-2",
+          "text": "Execute github-social.sh",
+          "completed": false
+        },
+        {
+          "id": "daily-3",
+          "text": "Run auto-scan.sh",
+          "completed": false
+        },
+        {
+          "id": "daily-4",
+          "text": "Generate token contract",
+          "completed": false
+        }
+      ]
+    }
+  ],
+  "last_updated": "2026-02-11T21:41:32.873513",
+  "version": "1.0"
+}

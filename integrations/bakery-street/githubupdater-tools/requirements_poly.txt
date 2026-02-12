@@ -1,0 +1,48 @@
+# Poly-AI Framework Dependencies
+# Core Framework
+PyGithub>=1.59.0
+numpy>=1.24.0
+requests>=2.31.0
+pyyaml>=6.0
+asyncio>=3.4.3
+
+# AI Integration
+openai>=1.0.0
+anthropic>=0.3.0
+
+# Data Processing
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Web Framework (for dashboard)
+fastapi>=0.100.0
+uvicorn>=0.23.0
+jinja2>=3.1.0
+
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.11.0
+
+# Monitoring & Logging
+prometheus-client>=0.17.0
+structlog>=23.1.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+
+# Development Tools
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+pre-commit>=3.3.0
+
+# Security
+cryptography>=41.0.0
+python-jose>=3.3.0
+
+# Utilities
+click>=8.1.0
+rich>=13.0.0
+typer>=0.9.0

@@ -1,0 +1,89 @@
+{
+  "name": "bakery-street-project",
+  "version": "1.0.0",
+  "description": "Bakery Street Project - Leading AI/ML organization specializing in enterprise solutions, cybersecurity, and innovative technology development.",
+  "main": "README.md",
+  "scripts": {
+    "test": "python tests/test_organization.py",
+    "test:ci": "python -m pytest tests/ -v --cov=.",
+    "validate": "python -c \"import tests.test_organization; print('✅ Validation passed')\"",
+    "build": "echo 'Organization profile - no build required'",
+    "start": "echo 'Visit README.md to learn about Bakery Street Project'",
+    "lint": "python -m flake8 tests/",
+    "format": "python -m black tests/"
+  },
+  "keywords": [
+    "ai",
+    "machine-learning",
+    "enterprise",
+    "cybersecurity",
+    "poly-ai-framework",
+    "dyads",
+    "voidshatter",
+    "peakyblenders",
+    "organization",
+    "technology",
+    "innovation",
+    "automation",
+    "devops",
+    "web-development"
+  ],
+  "author": {
+    "name": "Bakery Street Project",
+    "email": "contact@bakerystreetproject.com",
+    "url": "https://github.com/Bakery-street-projct"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bakery-street-projct/Bakery-street-projct.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bakery-street-projct/Bakery-street-projct/issues"
+  },
+  "homepage": "https://github.com/Bakery-street-projct/Bakery-street-projct#readme",
+  "devDependencies": {
+    "pytest": "^7.4.0",
+    "pytest-cov": "^4.1.0",
+    "black": "^23.0.0",
+    "flake8": "^6.0.0",
+    "mypy": "^1.5.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.9.0"
+  },
+  "files": [
+    "README.md",
+    "requirements.txt",
+    "image.jpg",
+    "tests/",
+    ".github/"
+  ],
+  "organization": {
+    "name": "Bakery Street Project",
+    "type": "AI/ML Technology Organization",
+    "founded": "2024",
+    "specialties": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Enterprise Solutions",
+      "Cybersecurity",
+      "Web Development",
+      "DevOps",
+      "Automation"
+    ],
+    "projects": [
+      "Poly-AI Framework",
+      "DYADS (Dynamic Asynchronous Data Streamliner)",
+      "Voidshatter",
+      "PeakyBlenders"
+    ],
+    "metrics": {
+      "customer_roi": "$2.5M+",
+      "active_projects": "15+",
+      "repositories": "10+",
+      "team_members": "5+"
+    }
+  }
+}

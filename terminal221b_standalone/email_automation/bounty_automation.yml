@@ -1,0 +1,127 @@
+---
+# Bounty PR Monitor & Email Automation Playbook
+# Terminal 221B - Daily Bounty Tracking
+# Usage: ansible-playbook ~/terminal221b/email_automation/bounty_automation.yml
+
+- name: Terminal 221B - Bounty PR Monitor & Email Automation
+  hosts: localhost
+  gather_facts: yes
+  vars:
+    bounty_prs:
+      - number: 8254
+        title: "OAuth v2"
+        repo: "coollabsio/coolify"
+        bounty: "$50"
+      - number: 8253
+        title: "Alpine Linux"
+        repo: "coollabsio/coolify"
+        bounty: "TBD"
+      - number: 8228
+        title: "Debian 13"
+        repo: "coollabsio/coolify"
+        bounty: "$6,900"
+    
+    log_dir: "{{ ansible_env.HOME }}/terminal221b/logs"
+    email_automation_dir: "{{ ansible_env.HOME }}/terminal221b/email_automation"
+    timestamp: "{{ ansible_date_time.iso8601_basic_short }}"
+
+  tasks:
+    - name: Ensure log directory exists
+      file:
+        path: "{{ log_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Check bounty PR status - PR {{ item.number }}
+      shell: |
+        gh pr view {{ item.number }} \
+          --repo {{ item.repo }} \
+          --json state,statusCheckRollup,mergeable,mergedAt,mergedBy \
+          --jq '.state + "|" + (.statusCheckRollup[0].conclusion // "PENDING") + "|" + (.mergeable // "unknown") + "|" + (.mergedAt // "null") + "|" + (.mergedBy.login // "null")'
+      register: pr_status
+      loop: "{{ bounty_prs }}"
+      ignore_errors: yes
+
+    - name: Parse and log PR results
+      set_fact:
+        pr_results: "{{ pr_results | default({}) | combine({item.item.number | string: item.stdout.split('|')}) }}"
+      loop: "{{ pr_status.results }}"
+      when: item.stdout is defined
+
+    - name: Display bounty status
+      debug:
+        msg: |
+          ╔════════════════════════════════════════════════════════════╗
+          ║  🎯 BOUNTY PR STATUS - {{ ansible_date_time.iso8601 }}  ║
+          ╚════════════════════════════════════════════════════════════╝
+          
+          PR #{{ item.item.number }} ({{ item.item.title }}) - {{ item.item.bounty }}
+            State: {{ item.stdout.split('|')[0] }}
+            CI Status: {{ item.stdout.split('|')[1] }}
+            Mergeable: {{ item.stdout.split('|')[2] }}
+      loop: "{{ pr_status.results }}"
+      when: item.stdout is defined
+
+    - name: Check for merged PRs
+      set_fact:
+        merged_prs: "{{ merged_prs | default([]) + [item.item.number] }}"
+      loop: "{{ pr_status.results }}"
+      when: 
+        - item.stdout is defined
+        - item.stdout.split('|')[0] == 'MERGED'
+
+    - name: Send notification if PRs merged
+      shell: |
+        echo "🎉 BOUNTY ALERT: PR(s) {{ merged_prs | join(', ') }} have been MERGED!" | tee -a {{ log_dir }}/bounty_alerts.log
+      when: merged_prs is defined and merged_prs | length > 0
+
+    - name: Log bounty check results
+      lineinfile:
+        path: "{{ log_dir }}/bounty_monitor.log"
+        line: "[{{ ansible_date_time.iso8601 }}] Bounty check complete - {{ pr_status.results | length }} PRs monitored"
+        create: yes
+        state: present
+
+    - name: Check if any email needs to be sent for merged bounties
+      shell: |
+        # If any PRs merged, trigger email notification
+        if [ "{{ merged_prs | default([]) | length }}" -gt 0 ]; then
+          echo "PR(s) MERGED - Consider sending bounty claim updates"
+          exit 0
+        fi
+      register: email_check
+      ignore_errors: yes
+
+    - name: Create bounty status summary
+      template:
+        src: bounty_status.j2
+        dest: "{{ log_dir }}/bounty_status_{{ timestamp }}.json"
+        mode: '0644'
+
+  handlers:
+    - name: Send bounty alert email
+      shell: |
+        python3 {{ email_automation_dir }}/send_emails_simple.py
+
+---
+# Template: bounty_status.j2
+# Generates JSON status report
+
+{
+  "timestamp": "{{ ansible_date_time.iso8601 }}",
+  "total_prs": {{ bounty_prs | length }},
+  "merged_count": {{ merged_prs | default([]) | length }},
+  "open_count": {{ pr_status.results | selectattr('stdout', 'search', 'OPEN') | list | length }},
+  "pr_details": [
+    {% for result in pr_status.results %}
+    {
+      "number": {{ result.item.number }},
+      "title": "{{ result.item.title }}",
+      "bounty": "{{ result.item.bounty }}",
+      "state": "{{ result.stdout.split('|')[0] if result.stdout is defined else 'ERROR' }}",
+      "ci_status": "{{ result.stdout.split('|')[1] if result.stdout is defined else 'ERROR' }}",
+      "mergeable": "{{ result.stdout.split('|')[2] if result.stdout is defined else 'ERROR' }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}

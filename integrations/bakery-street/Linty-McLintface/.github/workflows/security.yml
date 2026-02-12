@@ -1,0 +1,23 @@
+name: Security Scan  
+  
+on:  
+  push:  
+    branches: [ main ]  
+  pull_request:  
+    branches: [ main ]  
+  schedule:  
+    - cron: '0 0 * * 1'  
+  
+jobs:  
+  security:  
+    runs-on: windows-latest  
+    steps:  
+    - uses: actions/checkout@v4  
+    - name: Run CodeQL Analysis  
+      uses: github/codeql-action/init@v3  
+      with:  
+        languages: csharp  
+    - name: Autobuild  
+      uses: github/codeql-action/autobuild@v3  
+    - name: Perform CodeQL Analysis  
+      uses: github/codeql-action/analyze@v3 

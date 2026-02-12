@@ -1,0 +1,123 @@
+# Hive 999 — Agent Orchestration Metadata
+# ────────────────────────────────────────
+
+hive:
+  name: "Hive 999"
+  version: "1.0.0"
+  matrix_dimensions:
+    blockchains: 9
+    stakeholders: 9
+    trends: 9
+    total_nodes: 729
+    digital_root: 9
+
+agents:
+  queen_bee:
+    model: "ollama:granite3.3:8b"
+    role: orchestrator
+    tools:
+      - ThinkTool
+      - matrix_search
+      - compliance_check
+      - federation_route
+      - caterpillar_ansi
+    delegates_to:
+      - worker_bees
+      - drone_agents
+      - forager_agents
+    priority: high
+
+  worker_bees:
+    count: 9
+    model: "ollama:llama3.2:3b"
+    role: blockchain_specialist
+    dimension: blockchain
+    nodes_per_agent: 81
+    tools:
+      - ThinkTool
+      - matrix_search
+      - compliance_check
+    instances:
+      - Bitcoin
+      - Ethereum
+      - Solana
+      - TRON
+      - Stellar
+      - Avalanche
+      - Arbitrum One
+      - Polygon PoS
+      - Optimism
+
+  drone_agents:
+    count: 9
+    model: "ollama:llama3.2:3b"
+    role: stakeholder_specialist
+    dimension: stakeholder
+    nodes_per_agent: 81
+    tools:
+      - ThinkTool
+      - matrix_search
+      - compliance_check
+    instances:
+      - Customers
+      - Employees
+      - Investors
+      - Owners
+      - Suppliers & Vendors
+      - Communities
+      - Trade Unions
+      - Government Agencies
+      - Media
+
+  forager_agents:
+    count: 9
+    model: "ollama:llama3.2:3b"
+    role: trend_specialist
+    dimension: trend
+    nodes_per_agent: 81
+    tools:
+      - ThinkTool
+      - matrix_search
+    instances:
+      - Asset Tokenization
+      - DeFi Maturation
+      - Supply Chain Provenance
+      - Self-Sovereign Identity (SSI)
+      - CBDCs pilots
+      - AI-Blockchain synergies
+      - Sustainability-compliant validation
+      - RegTech compliance layers
+      - Cross-chain interoperability
+
+  mantis_mail:
+    model: TBD
+    role: email_assistant
+    status: stub
+    capabilities:
+      - IMAP/SMTP integration
+      - Monetization email drafting
+      - GitHub CLI summaries
+      - Weekly activity reports
+
+workflow:
+  routing:
+    - condition: "query mentions specific blockchain"
+      action: "delegate to corresponding worker_bee"
+    - condition: "query about stakeholder impact"
+      action: "delegate to corresponding drone_agent"
+    - condition: "query about trend analysis"
+      action: "delegate to corresponding forager_agent"
+    - condition: "cross-chain question"
+      action: "queen uses federation_route tool"
+    - condition: "compliance/regulation question"
+      action: "queen uses compliance_check tool"
+    - condition: "general or multi-dimensional query"
+      action: "queen handles directly with matrix_search"
+
+infrastructure:
+  llm_backend: Ollama (local)
+  vector_store: ChromaDB (persistent, ONNX embeddings)
+  hardware: NVIDIA GTX 1080, CUDA 12.2
+  python: "3.11+"
+  tui: prompt_toolkit
+  service: systemd

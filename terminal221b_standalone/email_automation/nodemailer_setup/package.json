@@ -1,0 +1,14 @@
+{
+  "name": "nodemailer_setup",
+  "version": "1.0.0",
+  "description": "Email Automation & Bounty Monitoring for Terminal 221B",
+  "main": "send_partnership_emails.js",
+  "scripts": {
+    "send-emails": "node send_partnership_emails.js",
+    "monitor-bounties": "node monitor_bounty_prs.js",
+    "setup": "bash ../setup_email.sh"
+  },
+  "keywords": ["email", "bounty", "automation", "nodemailer"],
+  "author": "Terminal 221B",
+  "license": "MIT"
+}

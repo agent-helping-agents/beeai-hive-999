@@ -1,0 +1,47 @@
+# Bounty Hunter Rules
+
+# Labels to search for
+bounty_labels:
+  - bounty
+  - reward
+  - bug-bounty
+  - help wanted
+  - good first issue
+  - hacktoberfest
+
+# Repositories to monitor
+repositories:
+  - anthropics/anthropic-sdk-python
+  - langchain-ai/langchain
+  - openai/openai-python
+  - huggingface/transformers
+
+# Complexity estimation
+complexity:
+  easy:
+    keywords: [typo, docs, test, comment, readme]
+    max_files: 2
+    estimated_hours: 1-4
+  medium:
+    keywords: [feature, enhancement, refactor]
+    max_files: 5
+    estimated_hours: 4-16
+  hard:
+    keywords: [architecture, performance, security, critical]
+    max_files: 10+
+    estimated_hours: 16+
+
+# Auto-comment settings
+auto_comment:
+  enabled: true
+  on_bounty_label: true
+  analysis_threshold: medium  # Only comment on medium+ complexity
+  signature: "🤖 *Automated by BountyHunter Bot*"
+
+# Skills detection
+skills:
+  python: [".py", "python", "django", "flask", "fastapi"]
+  javascript: [".js", ".ts", "node", "react", "vue"]
+  rust: [".rs", "cargo", "tokio"]
+  go: [".go", "golang"]
+  ai_ml: ["langchain", "transformers", "pytorch", "tensorflow"]

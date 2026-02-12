@@ -1,0 +1,6 @@
+#!/bin/bash
+VENV="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/venv"
+SCRIPT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/cohete_oracle.py"
+
+source "$VENV/bin/activate"
+python3 "$SCRIPT" "$@"

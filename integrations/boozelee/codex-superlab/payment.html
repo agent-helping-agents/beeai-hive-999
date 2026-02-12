@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy Codex SuperLab</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>body { font-family: Arial; background: #f6f9fc; color: #222; padding: 40px; }</style>
+</head>
+<body>
+    <h1>Codex SuperLab Early Access — $47</h1>
+    <button id="checkout">Buy Now</button>
+    <script>
+      var stripe = Stripe('pk_live_51RX2X3P81LhwV9TC2YPSQWGSAkPeiAjsVMYLr8h8ngk0NZXnrryXc9rFmHFgkkP5hdpwjyi2n8Au4EPY6Ozab7GS00e1Qu61Nhpk_live_51RX2X3P81LhwV9TC2YPSQWGSAkPeiAjsVMYLr8h8ngk0NZXnrryXc9rFmHFgkkP5hdpwjyi2n8Au4EPY6Ozab7GS00e1Qu61Nh');
+      document.getElementById('checkout').onclick = function() {
+        stripe.redirectToCheckout({
+          lineItems: [{price: 'prod_TH0DGndiljck4Y', quantity: 1}],
+          mode: 'payment',
+          successUrl: window.location.href + '?success=true',
+          cancelUrl: window.location.href + '?canceled=true',
+        });
+      };
+    </script>
+    <p>Secure payment with Stripe. 30-day back guarantee.</p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "hive-solana-integration",
+  "version": "1.0.0",
+  "description": "Supervisor Agent System for Hive 999 with Solana integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "solana",
+    "web3",
+    "ai",
+    "agents",
+    "supervisor",
+    "hypercube"
+  ],
+  "author": "Bakery Street Project",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.91.0",
+    "@solana/spl-token": "^0.4.0",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.34",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "ethers": "^6.11.1",
+    "tslib": "^2.6.2",
+    "@web3uikit/core": "^1.1.5",
+    "@web3uikit/icons": "^1.1.2",
+    "@web3uikit/web3": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4",
+    "ts-loader": "^9.5.1"
+  }
+}

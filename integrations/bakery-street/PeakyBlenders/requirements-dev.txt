@@ -1,0 +1,23 @@
+# Development Dependencies
+# Install with: pip install -r requirements-dev.txt
+
+# Testing
+pytest>=7.0.0,<8.0.0
+pytest-cov>=4.0.0,<5.0.0
+
+# Code Quality
+black>=22.0.0,<24.0.0
+flake8>=4.0.0,<7.0.0
+isort>=5.10.0,<6.0.0
+mypy>=0.950,<2.0.0
+
+# Documentation
+sphinx>=5.0.0,<8.0.0
+sphinx-rtd-theme>=1.0.0,<2.0.0
+
+# Development Tools
+jupyter>=1.0.0,<2.0.0
+ipykernel>=6.0.0,<7.0.0
+
+# Include production requirements
+-r requirements.txt

@@ -1,0 +1,28 @@
+# Include data files
+include data/*.csv
+include data/.gitkeep
+
+# Include documentation
+include README.md
+include CHANGELOG.md
+include LICENSE
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+
+# Include configuration files
+include requirements.txt
+include requirements-dev.txt
+
+# Include CI/CD files
+recursive-include .github *
+
+# Exclude development files
+exclude .gitignore
+exclude .dockerignore
+exclude Dockerfile
+exclude docker-compose*.yml
+global-exclude *.pyc
+global-exclude __pycache__/
+global-exclude .pytest_cache/
+global-exclude .coverage
+global-exclude *.egg-info/

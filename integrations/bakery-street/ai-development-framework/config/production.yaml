@@ -1,0 +1,36 @@
+aios:
+  backup_enabled: true
+  encryption_enabled: true
+  max_agents: 100
+  max_workflows: 50
+  state_persistence: true
+crewai:
+  api_rate_limits:
+    anthropic: 500
+    google: 2000
+    openai: 1000
+  max_concurrent_agents: 20
+  memory_enabled: true
+  tool_integration: true
+deployment:
+  auto_scaling: true
+  deployment_date: '2025-08-31 14:01:13'
+  environment: production
+  health_check_interval: 30
+  max_instances: 10
+  timeout_seconds: 600
+  version: 1.0.0
+monitoring:
+  alerting:
+    email: true
+    pagerduty: false
+    slack: true
+  grafana_enabled: true
+  log_aggregation: true
+  prometheus_enabled: true
+security:
+  audit_logging: true
+  authentication: jwt
+  authorization: rbac
+  encryption: aes-256
+  rate_limiting: true

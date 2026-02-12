@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marco01-brain-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marco01-brain-engine
+  template:
+    metadata:
+      labels:
+        app: marco01-brain-engine
+    spec:
+      containers:
+      - name: marco01
+        image: ghcr.io/ggml-org/llama.cpp:server-cuda
+        args:
+          - -m
+          - /models/marco-o1-q4_k_m.gguf
+          - --ctx-size
+          - "4096"
+          - --threads
+          - "8"
+          - --host
+          - 0.0.0.0
+          - --port
+          - "8080"
+          - --n-gpu-layers
+          - "999"
+          - --api-openai
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: models
+          mountPath: /models
+      volumes:
+      - name: models
+        hostPath:
+          path: /path/on/host/to/marco-o1
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: marco01-service
+spec:
+  selector:
+    app: marco01-brain-engine
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP

@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: primax-ai-supabase
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SUPABASE_URL
+        value: https://qpoqzqmoljezklfsvgux.supabase.co
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: WATERMARK
+        value: PRIMAX-AI-BSP-2025
+    healthCheckPath: /health
+    autoDeploy: false

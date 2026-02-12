@@ -1,0 +1,54 @@
+# Social Automation Rules
+
+# Engagement settings
+engagement:
+  daily_limit: 5  # Max daily automated comments
+  hours: [8, 16]  # Engagement hours (UTC)
+  labels_to_monitor:
+    - help wanted
+    - good first issue
+    - question
+    - discussion
+
+# Reply triggers
+triggers:
+  mentions: true
+  keywords:
+    - "@bot"
+    - "need help"
+    - "how to"
+    - "question"
+
+# Response templates
+templates:
+  greeting: |
+    👋 Thanks for opening this issue! I'm here to help.
+
+  help_wanted: |
+    🤝 I'd be happy to assist with this. Let me analyze the requirements.
+
+  clarification: |
+    🤔 Could you provide more details about:
+    - Expected behavior
+    - Current behavior
+    - Steps to reproduce
+
+  encouragement: |
+    💪 Great issue! This looks like an interesting problem to solve.
+
+# Sentiment analysis
+sentiment:
+  positive_keywords: [thanks, great, awesome, helpful, appreciate]
+  negative_keywords: [bug, broken, issue, problem, error]
+  neutral_keywords: [question, how, what, why, when]
+
+# Auto-review settings
+code_review:
+  enabled: true
+  min_lines_changed: 10
+  focus_areas:
+    - security
+    - performance
+    - best practices
+    - tests
+  signature: "🔍 *Automated Code Review*"

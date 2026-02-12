@@ -1,0 +1,296 @@
+# PRIMAX Automation Secure - Git Ignore
+# WATERMARK: PRIMAX-AI-BSP-2025
+# © 2025 Bakery Street Project
+
+# ============================================================================
+# CRITICAL: NEVER COMMIT CREDENTIALS
+# ============================================================================
+
+# Environment files
+*.env
+*.env.*
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.backup
+cash_activation.env
+
+# Secrets and Keys
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_rsa.pub
+*.asc
+*.gpg
+
+# Vaults
+vault/
+my-app-vault/
+*.vault
+.primax_vault_password
+
+# Credentials
+credentials.json
+token.json
+service-account.json
+client_secret*.json
+
+# ============================================================================
+# SENSITIVE DATA
+# ============================================================================
+
+# Customer Data
+customer_data/
+sales_records/
+user_data/
+analytics/
+transactions/
+
+# Logs (may contain sensitive info)
+*.log
+*.log.*
+logs/
+cash_activation.log
+
+# PID files
+*.pid
+.cash_activation.pid
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# ============================================================================
+# NODE.JS / NPM
+# ============================================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ============================================================================
+# IDE / EDITOR
+# ============================================================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, WebStorm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# OS
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ============================================================================
+# BUILD ARTIFACTS
+# ============================================================================
+
+# PDF outputs (generated, not source)
+dist/pdfs/
+*.pdf
+
+# Archives (packaged products)
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Compiled files
+*.o
+*.a
+*.out
+*.exe
+
+# ============================================================================
+# DEPLOYMENT
+# ============================================================================
+
+# Docker
+.dockerignore
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ============================================================================
+# MISCELLANEOUS
+# ============================================================================
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+*.cache
+
+# Generated documentation
+docs/_build/
+site/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+
+# ============================================================================
+# PRIMECORE SECURITY
+# ============================================================================
+
+# PRIME_GUARDIAN vault backups (should be in secure location)
+prime_guardian_backup/
+.prime_vault/
+
+# Encrypted archives (keep secure separately)
+*.gpg.parts/
+
+# Security audit files
+security_audit/
+audit_logs/
+
+# ============================================================================
+# PROJECT SPECIFIC
+# ============================================================================
+
+# Product archives (stored separately for upload)
+PRODUCTS_TO_SELL/*.tar.gz
+PRODUCTS_TO_SELL/*.zip
+
+# Gumroad upload artifacts
+gumroad_uploads/
+
+# Test output
+test_output/
+*.test.log
+
+# Monitoring
+monitoring/
+*.metrics
+
+# ============================================================================
+# EXCEPTIONS (Force Include)
+# ============================================================================
+
+# Example/template .env files (safe to commit)
+!.env.example
+!.env.template
+
+# License files (must be included)
+!LICENSE
+!LICENSE.*
+
+# Documentation
+!README.md
+!SECURITY.md
+!CONTRIBUTING.md
+
+# ============================================================================
+# END OF .gitignore
+# ============================================================================
+
+# WATERMARK: PRIMAX-AI-BSP-2025
+# © 2025 Bakery Street Project - All Rights Reserved
